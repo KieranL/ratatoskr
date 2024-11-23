@@ -35,12 +35,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = -velocity.x
 
 	if _state != State.DEAD:
-		var collision = move_and_collide(velocity * delta)
-		if (collision):
-			var collider = collision.get_collider();
-			if (collider is Player):
-				var player = collider #make typing more clear
-				player.hit(CONTACT_DAMAGE, self)
+		var collision_occured = move_and_slide()
+		if collision_occured:
+			for i in get_slide_collision_count():
+				var collider = get_slide_collision(i).get_collider()
+				if (collider is Player):
+					var player = collider #make typing more clear
+					player.hit(CONTACT_DAMAGE, self)
 
 	if velocity.x > 0.0:
 		sprite.scale.x = 0.8
