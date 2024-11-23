@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal coin_collected()
+signal died()
 
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
@@ -39,7 +40,7 @@ const FRAME_FLICKER_AMOUNT = 4
 			CURRENT_HEALTH = value
 			health_ui_amount.text = str(value)
 			
-@export var IFRAME_DURATION_IN_MS := 50000
+@export var IFRAME_DURATION_IN_MS := 400.0
 			
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
@@ -76,7 +77,7 @@ func _physics_process(delta: float) -> void:
 		xDirection *= WALK_SPEED
 		velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)
 
-	if not is_zero_approx(velocity.x):
+	if not is_zero_approx(velocity.x) and not _is_damage_state:
 		if velocity.x > 0.0:
 			sprite.scale.x = 1.0
 		else:
@@ -121,16 +122,32 @@ func try_jump() -> void:
 	else:
 		return
 	
-func hit(damage):
+func hit(damage, source: Node):
 	if _is_damage_state == false:
 		CURRENT_HEALTH -= damage
-		print("player hurt")
-		_is_damage_state = true
-		for i in FRAME_FLICKER_AMOUNT:
-			sprite.visible = false
-			await get_tree().create_timer(0.05).timeout
-			sprite.visible = true
-			await get_tree().create_timer(0.05).timeout
-		_is_damage_state = false
+		if (CURRENT_HEALTH <= 0):
+			died.emit()
+		else:
+			_is_damage_state = true
+			if (source is Enemy):
+				var enemy = source
+				
+				# push the player back
+				velocity = -velocity
+				if (abs(velocity.x) > abs(velocity.y)):
+					velocity.x *= 1.5 
 		
+			await trigger_invincible(IFRAME_DURATION_IN_MS)
+		
+		_is_damage_state = false
 	pass
+	
+	
+func trigger_invincible(duration_in_ms) -> void:
+	var duration_per_flicker = duration_in_ms / FRAME_FLICKER_AMOUNT / 2
+	for i in FRAME_FLICKER_AMOUNT:
+		sprite.visible = false
+		await get_tree().create_timer(duration_per_flicker / 1000).timeout
+		sprite.visible = true
+		await get_tree().create_timer(duration_per_flicker / 1000).timeout
+	
