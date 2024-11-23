@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
-[ext_resource type="Texture2D" uid="uid://cc7o7t0ramd6y" path="res://Assets/Art/robot.webp" id="9"]
 
 [sub_resource type="Animation" id="Animation_1ue6o"]
 length = 0.001
