@@ -1,4 +1,4 @@
-class_name Bullet
+class_name NutProjectile
 extends RigidBody2D
 
 

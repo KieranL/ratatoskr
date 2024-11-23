@@ -21,7 +21,7 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
-@onready var gun: Gun = sprite.get_node(^"Gun")
+@onready var spit: SpitNut = sprite.get_node(^"SpitNut")
 @onready var camera := $Camera as Camera2D
 
 var _isClimbing := false
@@ -86,8 +86,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var is_shooting := false
-	if Input.is_action_just_pressed("shoot" + action_suffix):
-		is_shooting = gun.shoot(sprite.scale.x)
+	if Input.is_action_just_pressed("spit" + action_suffix):
+		is_shooting = spit.shoot(sprite.scale.x)
 
 	var animation := get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
