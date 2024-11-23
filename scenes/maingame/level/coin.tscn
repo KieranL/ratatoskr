@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://w4j7xs5uhoer" path="res://Assets/SoundEffects/coin_pickup.wav" id="3"]
 [ext_resource type="Script" path="res://scenes/maingame/level/coin.gd" id="4"]
 
-
 [sub_resource type="Animation" id="Animation_4kkvr"]
 length = 0.001
 tracks/0/type = "value"
@@ -105,6 +104,7 @@ tracks/5/use_blend = true
 [sub_resource type="Animation" id="2"]
 loop_mode = 1
 step = 0.25
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
