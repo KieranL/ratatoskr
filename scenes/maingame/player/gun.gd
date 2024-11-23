@@ -4,7 +4,7 @@ extends Marker2D
 ## The Cooldown timer controls the cooldown duration between shots.
 
 const BULLET_VELOCITY = 850.0
-const BULLET_SCENE = preload("res://player/bullet.tscn")
+const BULLET_SCENE = preload("res://scenes/maingame/player/bullet.tscn")
 
 @onready var sound_shoot := $Shoot as AudioStreamPlayer2D
 @onready var timer := $Cooldown as Timer
