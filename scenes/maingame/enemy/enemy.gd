@@ -21,6 +21,7 @@ var _state := State.WALKING
 @export var HEALTH := 100
 @export var CONTACT_DAMAGE := 25
 
+
 func _physics_process(delta: float) -> void:
 	if _state == State.WALKING and velocity.is_zero_approx():
 		velocity.x = WALK_SPEED
@@ -33,12 +34,13 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		velocity.x = -velocity.x
 
-	var collision = move_and_collide(velocity * delta)
-	if (collision):
-		var collider = collision.get_collider();
-		if (collider is Player):
-			var player = collider #make typing more clear
-			player.hit(CONTACT_DAMAGE)
+	if _state != State.DEAD:
+		var collision = move_and_collide(velocity * delta)
+		if (collision):
+			var collider = collision.get_collider();
+			if (collider is Player):
+				var player = collider #make typing more clear
+				player.hit(CONTACT_DAMAGE, self)
 
 	if velocity.x > 0.0:
 		sprite.scale.x = 0.8

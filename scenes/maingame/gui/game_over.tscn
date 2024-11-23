@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3 uid="uid://b00vaat5xnj6r"]
+
+[ext_resource type="Script" path="res://scenes/maingame/gui/game_over.gd" id="1_oxtr6"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="2_5cpoa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5d8rs"]
+font = ExtResource("2_5cpoa")
+font_size = 31
+
+[sub_resource type="Animation" id="Animation_r6bbq"]
+resource_name = "game_over_text"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -299), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wxdgg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -299)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sml0"]
+_data = {
+"RESET": SubResource("Animation_wxdgg"),
+"game_over_text": SubResource("Animation_r6bbq")
+}
+
+[sub_resource type="Animation" id="Animation_wvx4h"]
+resource_name = "background_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("color_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.117647, 0.117647, 0), Color(0.117647, 0.117647, 0.117647, 0.972549)]
+}
+
+[sub_resource type="Animation" id="Animation_chyrf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("color_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.117647, 0.117647, 0.117647, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_csgga"]
+_data = {
+"RESET": SubResource("Animation_chyrf"),
+"background_fade": SubResource("Animation_wvx4h")
+}
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oxtr6")
+
+[node name="color_background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 803.0
+offset_bottom = 480.0
+color = Color(0.117647, 0.117647, 0.117647, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="color_background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -299.0
+offset_right = 2.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="color_background/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="color_background/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_5d8rs")
+
+[node name="restart_button" type="Button" parent="color_background/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="text_animation_player" type="AnimationPlayer" parent="color_background/CenterContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_6sml0")
+}
+
+[node name="background_animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_csgga")
+}
+
+[connection signal="pressed" from="color_background/CenterContainer/VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
