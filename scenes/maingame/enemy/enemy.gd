@@ -55,7 +55,12 @@ func _physics_process(delta: float) -> void:
 func destroy() -> void:
 	_state = State.DEAD
 	velocity = Vector2.ZERO
-
+	
+func take_damage(damage) -> void:
+	HEALTH -= damage
+	
+	if HEALTH <= 0:
+		destroy()
 
 func get_new_animation() -> StringName:
 	var animation_new: StringName
