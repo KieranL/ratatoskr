@@ -27,7 +27,11 @@ const CLIMB_HORIZONTAL_SPEED = 160
 var _isClimbing := false
 
 @onready var health_ui_amount = $UI/HealthLabel/HealthAmount
+@onready var collision_shape = $CollisionShape2D
 var _double_jump_charged := false
+
+var _is_damage_state := false
+const FRAME_FLICKER_AMOUNT = 4
 
 @export var MAX_HEALTH := 100;
 @export var CURRENT_HEALTH : int:
@@ -35,8 +39,11 @@ var _double_jump_charged := false
 			CURRENT_HEALTH = value
 			health_ui_amount.text = str(value)
 			
+@export var IFRAME_DURATION_IN_MS := 50000
+			
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
+	_is_damage_state = false
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -113,3 +120,17 @@ func try_jump() -> void:
 		jump_sound.play()	
 	else:
 		return
+	
+func hit(damage):
+	if _is_damage_state == false:
+		CURRENT_HEALTH -= damage
+		print("player hurt")
+		_is_damage_state = true
+		for i in FRAME_FLICKER_AMOUNT:
+			sprite.visible = false
+			await get_tree().create_timer(0.05).timeout
+			sprite.visible = true
+			await get_tree().create_timer(0.05).timeout
+		_is_damage_state = false
+		
+	pass

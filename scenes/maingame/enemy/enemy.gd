@@ -16,8 +16,10 @@ var _state := State.WALKING
 @onready var floor_detector_right := $FloorDetectorRight as RayCast2D
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
+@onready var collision_shape := $CollisionShape2D
 
-@export var health := 100
+@export var HEALTH := 100
+@export var CONTACT_DAMAGE := 25
 
 func _physics_process(delta: float) -> void:
 	if _state == State.WALKING and velocity.is_zero_approx():
@@ -31,7 +33,12 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		velocity.x = -velocity.x
 
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	if (collision):
+		var collider = collision.get_collider();
+		if (collider is Player):
+			var player = collider #make typing more clear
+			player.hit(CONTACT_DAMAGE)
 
 	if velocity.x > 0.0:
 		sprite.scale.x = 0.8

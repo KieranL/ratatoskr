@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/player/bullet.gd" id="2"]
 
-
 [sub_resource type="CanvasItemMaterial" id="1"]
 
 [sub_resource type="CanvasItemMaterial" id="2"]
@@ -98,8 +97,8 @@ collision_mask = 26
 mass = 0.0283333
 gravity_scale = 0.1
 continuous_cd = 2
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
