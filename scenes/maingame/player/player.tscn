@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=24 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
@@ -184,10 +184,46 @@ tracks/0/keys = {
 "values": [10, 10, 14, 14]
 }
 
+[sub_resource type="Animation" id="Animation_8oyr8"]
+resource_name = "climb"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_qngod"]
+resource_name = "damaged"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [50]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnr5f"]
 _data = {
 "RESET": SubResource("Animation_1ue6o"),
+"climb": SubResource("Animation_8oyr8"),
 "crouch": SubResource("1"),
+"damaged": SubResource("Animation_qngod"),
 "falling": SubResource("2"),
 "falling_weapon": SubResource("3"),
 "idle": SubResource("4"),
