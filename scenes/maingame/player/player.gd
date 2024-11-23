@@ -21,8 +21,17 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
 @onready var gun: Gun = sprite.get_node(^"Gun")
 @onready var camera := $Camera as Camera2D
+@onready var health_ui_amount = $UI/HealthLabel/HealthAmount
 var _double_jump_charged := false
 
+@export var MAX_HEALTH := 100;
+@export var CURRENT_HEALTH : int:
+		set(value):
+			CURRENT_HEALTH = value
+			health_ui_amount.text = str(value)
+			
+func _ready() -> void:
+	CURRENT_HEALTH = MAX_HEALTH
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
