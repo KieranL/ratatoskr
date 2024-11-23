@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
-[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
-[ext_resource type="Script" path="res://scenes/maingame/player/gun.gd" id="8"]
+[ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://cc7o7t0ramd6y" path="res://Assets/Art/robot.webp" id="9"]
 
 [sub_resource type="Animation" id="1"]
@@ -214,15 +213,15 @@ hframes = 8
 vframes = 8
 frame = 42
 
-[node name="Gun" type="Marker2D" parent="Sprite2D"]
+[node name="SpitNut" type="Marker2D" parent="Sprite2D"]
 position = Vector2(14, 1)
 script = ExtResource("8")
 
-[node name="Shoot" type="AudioStreamPlayer2D" parent="Sprite2D/Gun"]
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Sprite2D/SpitNut"]
 position = Vector2(-30.6589, -6.13176)
 stream = ExtResource("6")
 
-[node name="Cooldown" type="Timer" parent="Sprite2D/Gun"]
+[node name="Cooldown" type="Timer" parent="Sprite2D/SpitNut"]
 wait_time = 0.3
 one_shot = true
 

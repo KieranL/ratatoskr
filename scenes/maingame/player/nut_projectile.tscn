@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://df7ddsoclivwe"]
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1"]
-[ext_resource type="Script" path="res://scenes/maingame/player/bullet.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/maingame/player/nut_projectile.gd" id="2"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 
@@ -89,7 +89,7 @@ _data = {
 "destroy": SubResource("5")
 }
 
-[node name="Bullet" type="RigidBody2D"]
+[node name="Nut" type="RigidBody2D"]
 z_index = 5
 material = SubResource("1")
 collision_layer = 0
