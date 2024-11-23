@@ -1,5 +1,9 @@
 # 2D Platformer
 
+
+[![Build Godot Project](https://github.com/KieranL/ratatoskr/actions/workflows/build.yml/badge.svg)](https://github.com/KieranL/ratatoskr/actions/workflows/build.yml)
+
+
 This demo is a pixel art 2D platformer with graphics and sound.
 
 It shows you how to code characters and physics-based objects
