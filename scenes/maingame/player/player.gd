@@ -23,7 +23,6 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
 @onready var spit: SpitNut = sprite.get_node(^"SpitNut")
-@onready var melee: MeleeAttack = sprite.get_node(^"MeleeAttack")
 @onready var camera := $Camera as Camera2D
 
 var _isClimbing := false
@@ -93,7 +92,7 @@ func _physics_process(delta: float) -> void:
 
 	var is_attacking := false
 	if Input.is_action_just_pressed("melee" + action_suffix):
-		is_shooting = melee.attack(sprite.scale.x)
+		pass
 
 	var animation := get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
