@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b00vaat5xnj6r"]
+[gd_scene load_steps=11 format=3 uid="uid://d17sdkea6x42w"]
 
 [ext_resource type="Script" path="res://scenes/maingame/gui/game_over.gd" id="1_oxtr6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="2_5cpoa"]
+[ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="3_m4hqi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5d8rs"]
 font = ExtResource("2_5cpoa")
@@ -123,5 +124,9 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_csgga")
 }
+
+[node name="Game over music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m4hqi")
+pitch_scale = 0.82
 
 [connection signal="pressed" from="color_background/CenterContainer/VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]

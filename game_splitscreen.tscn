@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4_8j0va"]
 [ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://scenes/maingame/level/background/parallax_background.tscn" id="5_47vt4"]
 
-
 [sub_resource type="Gradient" id="Gradient_77njx"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5sxld"]
@@ -48,7 +47,7 @@ unique_name_in_owner = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(399, 480)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Level" parent="Black/SplitContainer/ViewportContainer1/Viewport1" instance=ExtResource("3_e0nyr")]
@@ -76,7 +75,7 @@ unique_name_in_owner = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(399, 480)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="ParallaxBackground" parent="Black/SplitContainer/ViewportContainer2/Viewport2" instance=ExtResource("5_47vt4")]
