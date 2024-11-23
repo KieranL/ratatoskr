@@ -23,3 +23,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			_pause_menu.close()
 		get_tree().root.set_input_as_handled()
+	elif event.is_action_pressed("reload_scene"):
+		get_tree().reload_current_scene()

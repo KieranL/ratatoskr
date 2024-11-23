@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=21 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="Script" path="res://scenes/maingame/player/gun.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://cc7o7t0ramd6y" path="res://Assets/Art/robot.webp" id="9"]
 
@@ -185,6 +186,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="11"]
 size = Vector2(42.5, 54.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_amg2l"]
+font = ExtResource("6_dyfdk")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8v8mq"]
+font = ExtResource("6_dyfdk")
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_mask = 30
@@ -205,6 +212,7 @@ position = Vector2(0, -14)
 texture = ExtResource("9")
 hframes = 8
 vframes = 8
+frame = 42
 
 [node name="Gun" type="Marker2D" parent="Sprite2D"]
 position = Vector2(14, 1)
@@ -267,3 +275,16 @@ position = Vector2(1870, 564)
 scale = Vector2(2, 2)
 action = "shoot"
 visibility_mode = 1
+
+[node name="HealthLabel" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Health:"
+label_settings = SubResource("LabelSettings_amg2l")
+
+[node name="HealthAmount" type="Label" parent="UI/HealthLabel"]
+layout_mode = 0
+offset_left = 59.0
+offset_right = 99.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_8v8mq")

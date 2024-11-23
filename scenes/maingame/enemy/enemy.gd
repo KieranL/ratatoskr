@@ -17,6 +17,7 @@ var _state := State.WALKING
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 
+@export var health := 100
 
 func _physics_process(delta: float) -> void:
 	if _state == State.WALKING and velocity.is_zero_approx():
