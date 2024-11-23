@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
+[ext_resource type="Script" path="res://scenes/maingame/player/melee_attack.gd" id="5_sjml7"]
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
@@ -240,6 +241,18 @@ position = Vector2(-30.6589, -6.13176)
 stream = ExtResource("6")
 
 [node name="Cooldown" type="Timer" parent="Sprite2D/SpitNut"]
+wait_time = 0.3
+one_shot = true
+
+[node name="MeleeAttack" type="Marker2D" parent="Sprite2D"]
+position = Vector2(14, 1)
+script = ExtResource("5_sjml7")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Sprite2D/MeleeAttack"]
+position = Vector2(-30.6589, -6.13176)
+stream = ExtResource("6")
+
+[node name="Cooldown" type="Timer" parent="Sprite2D/MeleeAttack"]
 wait_time = 0.3
 one_shot = true
 
