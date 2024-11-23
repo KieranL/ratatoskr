@@ -72,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [7]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -208,13 +208,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333, 0.666, 0.999, 1.332, 1.665, 1.998, 2.331, 2.664, 2.997),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.332, 1.665, 1.998, 2.331, 2.664, 2.997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 5, 6, 5, 6, 7, 6, 7, 5]
+"values": [0, 5, 6, 7, 6, 7, 5]
 }
 
 [sub_resource type="Animation" id="4"]
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -223,10 +224,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.062475, 0.12495, 0.187425, 0.2499, 0.312375, 0.37485, 0.437325, 0.4998, 0.562275, 0.62475, 0.687225, 0.7497, 0.812175, 0.87465, 0.937125),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0kjfc"]

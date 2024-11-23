@@ -111,6 +111,16 @@ func get_new_animation(is_shooting := false) -> String:
 			animation_new = "jumping"
 	if is_shooting:
 		animation_new += "_weapon"
+		
+	if _isClimbing:
+		animation_new = "climb"	
+		
+	if _is_damage_state:
+		animation_new = "damaged"
+	
+	
+	
+	
 	return animation_new
 
 
