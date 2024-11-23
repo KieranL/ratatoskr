@@ -8,12 +8,14 @@ const ACCELERATION_SPEED = WALK_SPEED * 6.0
 const JUMP_VELOCITY = -725.0
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
+## Climb settings
+const CLIMB_HORIZONTAL_SPEED = 160
 
 ## The player listens for input actions appended with this suffix.[br]
 ## Used to separate controls for multiple players in splitscreen.
 @export var action_suffix := ""
 
-var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
+@export var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var platform_detector := $PlatformDetector as RayCast2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var shoot_timer := $ShootAnimation as Timer
@@ -21,6 +23,9 @@ var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
 @onready var gun: Gun = sprite.get_node(^"Gun")
 @onready var camera := $Camera as Camera2D
+
+var _isClimbing := false
+
 @onready var health_ui_amount = $UI/HealthLabel/HealthAmount
 var _double_jump_charged := false
 
@@ -35,17 +40,34 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
-		_double_jump_charged = true
+		_isClimbing = false
+		
+	if Input.is_action_just_pressed("toggle_climb"):
+		_isClimbing = !_isClimbing
+		velocity.y = 0
+		velocity.x = 0
+	
 	if Input.is_action_just_pressed("jump" + action_suffix):
 		try_jump()
 	elif Input.is_action_just_released("jump" + action_suffix) and velocity.y < 0.0:
 		# The player let go of jump early, reduce vertical momentum.
 		velocity.y *= 0.6
-	# Fall.
-	velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
+	
+	# Fall if not climbing	
+	if !_isClimbing:
+		velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)	
 
-	var direction := Input.get_axis("move_left" + action_suffix, "move_right" + action_suffix) * WALK_SPEED
-	velocity.x = move_toward(velocity.x, direction, ACCELERATION_SPEED * delta)
+	var xDirection := Input.get_axis("move_left" + action_suffix, "move_right" + action_suffix)
+	
+	if _isClimbing:
+		var yDirection := Input.get_axis("move_up" + action_suffix, "move_down" + action_suffix) * WALK_SPEED
+		velocity.y = move_toward(velocity.y, yDirection, ACCELERATION_SPEED * delta)
+		
+		xDirection *= CLIMB_HORIZONTAL_SPEED
+		velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)
+	else:		
+		xDirection *= WALK_SPEED
+		velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)
 
 	if not is_zero_approx(velocity.x):
 		if velocity.x > 0.0:
@@ -84,14 +106,10 @@ func get_new_animation(is_shooting := false) -> String:
 	return animation_new
 
 
-func try_jump() -> void:
+func try_jump() -> void:	
 	if is_on_floor():
 		jump_sound.pitch_scale = 1.0
-	elif _double_jump_charged:
-		_double_jump_charged = false
-		velocity.x *= 2.5
-		jump_sound.pitch_scale = 1.5
+		velocity.y = JUMP_VELOCITY
+		jump_sound.play()	
 	else:
 		return
-	velocity.y = JUMP_VELOCITY
-	jump_sound.play()
