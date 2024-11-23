@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=22 format=3 uid="uid://vh7pmputa7r3"]
 
+[ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://cc7o7t0ramd6y" path="res://Assets/Art/robot.webp" id="9"]
+[ext_resource type="Script" path="res://scenes/maingame/player/gun.gd" id="8"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "crouch"
@@ -169,8 +171,24 @@ tracks/0/keys = {
 "values": [34, 35, 36, 37]
 }
 
+[sub_resource type="Animation" id="Animation_1ue6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnr5f"]
 _data = {
+"RESET": SubResource("Animation_1ue6o"),
 "crouch": SubResource("1"),
 "falling": SubResource("2"),
 "falling_weapon": SubResource("3"),
@@ -209,10 +227,10 @@ collision_mask = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -14)
-texture = ExtResource("9")
+texture = ExtResource("2_r5fyt")
 hframes = 8
 vframes = 8
-frame = 42
+frame = 30
 
 [node name="SpitNut" type="Marker2D" parent="Sprite2D"]
 position = Vector2(14, 1)
