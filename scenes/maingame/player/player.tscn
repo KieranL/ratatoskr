@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=22 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://b01brytl75mwa" path="res://Assets/SoundEffects/shoot.wav" id="6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
-[ext_resource type="Script" path="res://scenes/maingame/player/melee.gd" id="7_72pq0"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 
 [sub_resource type="Animation" id="Animation_1ue6o"]
@@ -209,9 +208,6 @@ font = ExtResource("6_dyfdk")
 [sub_resource type="LabelSettings" id="LabelSettings_8v8mq"]
 font = ExtResource("6_dyfdk")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifa74"]
-size = Vector2(32.5, 53.75)
-
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
 collision_mask = 28
@@ -308,9 +304,3 @@ offset_left = 59.0
 offset_right = 99.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_8v8mq")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(37.5, -14.375)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_ifa74")
-script = ExtResource("7_72pq0")

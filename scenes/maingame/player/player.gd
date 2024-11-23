@@ -90,10 +90,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("spit" + action_suffix):
 		is_shooting = spit.shoot(sprite.scale.x)
 
-	var is_attacking := false
-	if Input.is_action_just_pressed("melee" + action_suffix):
-		pass
-
 	var animation := get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
 		if is_shooting:
