@@ -21,7 +21,11 @@ level, and the player is invincible, unlike the enemies."
 config/tags=PackedStringArray("2d", "demo", "official", "physics", "tilemap")
 run/main_scene="res://game_singleplayer.tscn"
 config/features=PackedStringArray("4.3")
-config/icon="res://icon.webp"
+config/icon="res://Assets/Art/icon.webp"
+
+[audio]
+
+buses/default_bus_layout="res://Assets/Music/default_bus_layout.tres"
 
 [autoload]
 
