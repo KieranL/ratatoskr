@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://08mkofgbxx70"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://08mkofgbxx70"]
 
 [ext_resource type="Texture2D" uid="uid://d0ops71sk562g" path="res://Assets/Art/tiles.webp" id="1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86n7h"]
+resource_name = "grass center"
 texture = ExtResource("1")
 texture_region_size = Vector2i(64, 64)
 0:0/next_alternative_id = 8
@@ -370,7 +371,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_70rax"]
 texture = ExtResource("1")
 texture_region_size = Vector2i(64, 64)
-0:0/next_alternative_id = 8
+0:0/next_alternative_id = 9
 0:0/0 = 0
 0:0/1 = 1
 0:0/1/flip_h = true
@@ -393,6 +394,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/7/transpose = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exupg"]
+resource_name = "grass end"
 texture = ExtResource("1")
 margins = Vector2i(64, 0)
 texture_region_size = Vector2i(64, 64)
@@ -426,7 +428,22 @@ texture_region_size = Vector2i(64, 64)
 0:0/7/transpose = true
 0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(32, 22, -32, 22, -32, -32, 32, -32)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3n31u"]
+resource_name = "Branch"
+texture = ExtResource("1")
+texture_region_size = Vector2i(64, 64)
+6:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cb5xf"]
+resource_name = "Tree"
+texture = ExtResource("1")
+texture_region_size = Vector2i(64, 64)
+4:2/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhpsr"]
+resource_name = "Thin mid"
 texture = ExtResource("1")
 margins = Vector2i(128, 0)
 texture_region_size = Vector2i(64, 64)
@@ -461,6 +478,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(32, 22, -32, 22, -32, -14, 32, -14)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cyfft"]
+resource_name = "Thin edge"
 texture = ExtResource("1")
 margins = Vector2i(192, 0)
 texture_region_size = Vector2i(64, 64)
@@ -687,3 +705,5 @@ sources/16 = SubResource("TileSetAtlasSource_yr11e")
 sources/17 = SubResource("TileSetAtlasSource_74kwm")
 sources/18 = SubResource("TileSetAtlasSource_jxo3y")
 sources/19 = SubResource("TileSetAtlasSource_70rax")
+sources/20 = SubResource("TileSetAtlasSource_3n31u")
+sources/21 = SubResource("TileSetAtlasSource_cb5xf")
