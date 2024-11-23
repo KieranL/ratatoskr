@@ -7,21 +7,6 @@
 font = ExtResource("2_5cpoa")
 font_size = 31
 
-[sub_resource type="Animation" id="Animation_r6bbq"]
-resource_name = "game_over_text"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, -299), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_wxdgg"]
 length = 0.001
 tracks/0/type = "value"
@@ -37,25 +22,25 @@ tracks/0/keys = {
 "values": [Vector2(2, -299)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sml0"]
-_data = {
-"RESET": SubResource("Animation_wxdgg"),
-"game_over_text": SubResource("Animation_r6bbq")
-}
-
-[sub_resource type="Animation" id="Animation_wvx4h"]
-resource_name = "background_fade"
+[sub_resource type="Animation" id="Animation_r6bbq"]
+resource_name = "game_over_text"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("color_background:color")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.117647, 0.117647, 0.117647, 0), Color(0.117647, 0.117647, 0.117647, 0.972549)]
+"values": [Vector2(2, -299), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sml0"]
+_data = {
+"RESET": SubResource("Animation_wxdgg"),
+"game_over_text": SubResource("Animation_r6bbq")
 }
 
 [sub_resource type="Animation" id="Animation_chyrf"]
@@ -71,6 +56,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.117647, 0.117647, 0.117647, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wvx4h"]
+resource_name = "background_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("color_background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.117647, 0.117647, 0), Color(0.117647, 0.117647, 0.117647, 0.972549)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_csgga"]
