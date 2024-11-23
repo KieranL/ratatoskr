@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://df7ddsoclivwe"]
+[gd_scene load_steps=13 format=3 uid="uid://bfhh6r6rtpxhv"]
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/player/nut_projectile.gd" id="2"]
