@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://do7htx4sqmcnh"]
 
-[ext_resource type="AudioStream" uid="uid://dp0tta14mu7ux" path="res://Assets/Music/music.ogg" id="1_8pjkj"]
-
+[ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="1_cwadu"]
 
 [node name="Music" type="AudioStreamPlayer"]
 process_mode = 1
-stream = ExtResource("1_8pjkj")
+stream = ExtResource("1_cwadu")
 volume_db = -3.0
 autoplay = true
