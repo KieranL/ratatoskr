@@ -1,29 +1,11 @@
-# 2D Platformer
+# Ratatoskr
 
 
 [![Build Godot Project](https://github.com/KieranL/ratatoskr/actions/workflows/build.yml/badge.svg)](https://github.com/KieranL/ratatoskr/actions/workflows/build.yml)
 
+The greatest squirrel of all time: https://en.m.wikipedia.org/wiki/Ratatoskr
 
-This demo is a pixel art 2D platformer with graphics and sound.
-
-It shows you how to code characters and physics-based objects
-in a real game context. This is a relatively complete demo
-where the player can jump, walk on slopes, fire bullets,
-interact with enemies, and more. It contains one closed
-level, and the player is invincible, unlike the enemies.
-
-You will find most of the demo’s content in the `level.tscn` scene.
-You can open it from the default `game.tscn` scene, or double
-click on `level.tscn` in the `src/level/` directory.
-
-We invite you to open the demo's GDScript files in the editor as
-they contain a lot of comments that explain how each class works.
-
-Language: GDScript
-
-Renderer: Compatibility
-
-Check out this demo on the asset library: https://godotengine.org/asset-library/asset/120
+Check out the demo this was based from in the asset library: https://godotengine.org/asset-library/asset/120
 
 ## Features
 
@@ -42,7 +24,7 @@ Check out this demo on the asset library: https://godotengine.org/asset-library/
 
 ## Screenshots
 
-![2D Platformer](screenshots/platformer.webp)
+![2D Platformer](screenshots/RatatoskrWithHorn.png)
 
 ## Music
 
