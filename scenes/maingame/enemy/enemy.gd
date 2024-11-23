@@ -21,6 +21,8 @@ var _state := State.WALKING
 @export var HEALTH := 100
 @export var CONTACT_DAMAGE := 25
 
+const FRAME_FLICKER_AMOUNT = 4
+const FRAME_FLICKER_TIME = 400
 
 func _physics_process(delta: float) -> void:
 	if _state == State.WALKING and velocity.is_zero_approx():
@@ -60,6 +62,8 @@ func destroy() -> void:
 func take_damage(damage) -> void:
 	HEALTH -= damage
 	
+	await trigger_invincible(FRAME_FLICKER_TIME)
+	
 	if HEALTH <= 0:
 		destroy()
 
@@ -73,3 +77,12 @@ func get_new_animation() -> StringName:
 	else:
 		animation_new = &"destroy"
 	return animation_new
+
+func trigger_invincible(duration_in_ms) -> void:
+	var duration_per_flicker = duration_in_ms / FRAME_FLICKER_AMOUNT / 2
+	
+	for i in FRAME_FLICKER_AMOUNT:
+		sprite.visible = false
+		await get_tree().create_timer(duration_per_flicker / 1000).timeout
+		sprite.visible = true
+		await get_tree().create_timer(duration_per_flicker / 1000).timeout
