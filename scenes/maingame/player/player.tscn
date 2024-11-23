@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scenes/maingame/player/gun.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://cc7o7t0ramd6y" path="res://Assets/Art/robot.webp" id="9"]
 
-
 [sub_resource type="Animation" id="1"]
 resource_name = "crouch"
 length = 0.01
