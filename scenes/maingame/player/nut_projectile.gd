@@ -11,4 +11,4 @@ func destroy() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
-		(body as Enemy).destroy()
+		(body as Enemy).take_damage(50)

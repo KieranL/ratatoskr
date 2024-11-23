@@ -16,7 +16,7 @@ func shoot(direction: float = 1.0) -> bool:
 		return false
 	var nut := NUT_SCENE.instantiate() as NutProjectile
 	nut.global_position = global_position
-	nut.linear_velocity = Vector2(direction * NUT_VELOCITY, 0.0)
+	nut.linear_velocity = Vector2(direction * NUT_VELOCITY, -350)
 
 	nut.set_as_top_level(true)
 	add_child(nut)
