@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba5sup1xck4rb"]
+[gd_scene load_steps=8 format=3 uid="uid://h05abmq7xxv7"]
 
 [ext_resource type="Script" path="res://scenes/maingame/level/heal_berry.gd" id="1_j11vg"]
-[ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_ev2cw"]
 [ext_resource type="AudioStream" uid="uid://w4j7xs5uhoer" path="res://Assets/SoundEffects/coin_pickup.wav" id="2_j2peg"]
+[ext_resource type="Texture2D" uid="uid://dtg0xba1aqp3w" path="res://Assets/Art/Berry.webp" id="2_syrbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8gef"]
 
@@ -76,7 +76,7 @@ collision_layer = 0
 script = ExtResource("1_j11vg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ev2cw")
+texture = ExtResource("2_syrbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g8gef")

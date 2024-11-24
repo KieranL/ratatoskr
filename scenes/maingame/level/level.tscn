@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ctgumjaytuoch"]
+[gd_scene load_steps=31 format=3 uid="uid://ctgumjaytuoch"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/level/level.gd" id="1_4uv34"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://upfcr5xg5fvh" path="res://Assets/Art/grass_3.webp" id="13"]
 [ext_resource type="Texture2D" uid="uid://icddaryasunc" path="res://Assets/Art/tree_1.webp" id="14"]
 [ext_resource type="Texture2D" uid="uid://dea1a76o6b0ix" path="res://Assets/Art/tree_2.webp" id="15"]
-[ext_resource type="PackedScene" path="res://scenes/maingame/enemies/hornet/entity.tscn" id="15_cjxsr"]
+[ext_resource type="PackedScene" uid="uid://dafavqaic6lhx" path="res://scenes/maingame/enemies/hornet/entity.tscn" id="15_cjxsr"]
 [ext_resource type="Texture2D" uid="uid://cqydct6vajobg" path="res://Assets/Art/bush_1.webp" id="16"]
 [ext_resource type="Script" path="res://scenes/maingame/enemy/boss.gd" id="16_1by48"]
 [ext_resource type="PackedScene" path="res://scenes/maingame/enemies/hornet/spwaner.tscn" id="16_06gec"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
 [ext_resource type="AudioStream" uid="uid://discn7bbcype8" path="res://Assets/Music/Boss Theme.ogg" id="26_e8gg0"]
 [ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="27_s2h18"]
+[ext_resource type="PackedScene" uid="uid://h05abmq7xxv7" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "move"
