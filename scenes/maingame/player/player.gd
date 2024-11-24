@@ -182,4 +182,3 @@ func _on_boss_zone_trigger() -> void:
 
 func acorn_collected() -> void:
 	ACORNS = ACORNS + 1
-	print(ACORNS)
