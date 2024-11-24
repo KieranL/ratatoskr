@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://h05abmq7xxv7"]
+[gd_scene load_steps=8 format=3 uid="uid://ba5sup1xck4rb"]
 
 [ext_resource type="Script" path="res://scenes/maingame/level/heal_berry.gd" id="1_j11vg"]
 [ext_resource type="AudioStream" uid="uid://w4j7xs5uhoer" path="res://Assets/SoundEffects/coin_pickup.wav" id="2_j2peg"]

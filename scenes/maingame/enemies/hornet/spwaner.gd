@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 @onready var hornets := $Hornets
 @onready var sprite := $Sprite2D as Sprite2D
+@onready var hit_sound := $Hit as AudioStreamPlayer2D
 
 var _on_cooldown = false
 var _current_spawned = 0
@@ -38,7 +39,7 @@ func take_damage(damage) -> void:
 	if _is_hit == false:
 		_is_hit = true
 		CURRENT_HEALTH -= damage
-	
+		hit_sound.play()
 		await trigger_invincible(FRAME_FLICKER_TIME)
 	
 		if CURRENT_HEALTH <= 0:
