@@ -359,7 +359,6 @@ shape = SubResource("11")
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5")
-volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
