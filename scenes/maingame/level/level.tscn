@@ -1786,16 +1786,20 @@ offset_bottom = -267.0
 color = Color(0.133196, 0.133196, 0.133196, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="BossTheme" type="AudioStreamPlayer2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("28_d62or")]
+position = Vector2(-97, 614)
+
+[node name="BossTheme" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(121.25, -767.5)
+scale = Vector2(1.25, 1.25)
 stream = ExtResource("26_e8gg0")
 volume_db = 8.0
 
-[node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(121.25, -767.5)
+scale = Vector2(1.25, 1.25)
 stream = ExtResource("27_s2h18")
 autoplay = true
-
-[node name="Player" parent="." instance=ExtResource("28_d62or")]
-position = Vector2(-97, 614)
 
 [node name="BossTriggerArea" type="Area2D" parent="."]
 position = Vector2(0, 5)
