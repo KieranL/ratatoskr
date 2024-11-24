@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal coin_collected()
 signal died()
+signal bossZoneTriggerPlayer()
+signal bossZoneLeavePlayer()
 
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
@@ -54,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_climb"):
 		_isClimbing = !_isClimbing
 		velocity.y = 0
-		velocity.x = 0
+		velocity.x = 0	
 	
 	if Input.is_action_just_pressed("jump" + action_suffix):
 		try_jump()
@@ -133,7 +135,7 @@ func try_jump() -> void:
 	if is_on_floor():
 		jump_sound.pitch_scale = 1.0
 		velocity.y = JUMP_VELOCITY
-		jump_sound.play()	
+		jump_sound.play()
 	else:
 		return
 	
@@ -165,4 +167,7 @@ func trigger_invincible(duration_in_ms) -> void:
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
 		sprite.visible = true
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
-	
+	# Replace with function body.
+
+func _on_boss_zone_trigger() -> void:
+	bossZoneTriggerPlayer.emit()
