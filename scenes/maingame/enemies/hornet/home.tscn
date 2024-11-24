@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu67tkppu1741"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8evp"]
+radius = 272.017
+
+[node name="RoamRadius" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="roam_sphere" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j8evp")

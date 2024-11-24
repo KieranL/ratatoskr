@@ -25,9 +25,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				_pause_menu.close()
 			get_tree().root.set_input_as_handled()
-	elif event.is_action_pressed("reload_scene") and not is_game_over:
-		reload_game()	
-	
+	elif event.is_action_pressed("reload_scene"):
+		reload_game()
+
+
 func _on_player_died() -> void:
 	is_game_over = true
 	var tree := get_tree()

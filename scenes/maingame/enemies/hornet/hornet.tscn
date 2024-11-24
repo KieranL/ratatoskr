@@ -1,21 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsevj1qewd45y"]
+[gd_scene load_steps=5 format=3 uid="uid://dsevj1qewd45y"]
 
 [ext_resource type="Texture2D" uid="uid://c3medml07qtaf" path="res://Assets/Art/enemies/hornet/hornet.jpg" id="1_cd6wb"]
 [ext_resource type="Script" path="res://scenes/maingame/enemies/hornet/hornet.gd" id="1_fgc2m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hecl"]
-radius = 14.0
-height = 28.0
+radius = 25.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hica2"]
+radius = 127.004
 
 [node name="Hornet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 25
 motion_mode = 1
 script = ExtResource("1_fgc2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.76777, 6.5)
-scale = Vector2(0.169399, 0.169399)
+scale = Vector2(0.284153, 0.284153)
 texture = ExtResource("1_cd6wb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, 7)
 shape = SubResource("CapsuleShape2D_0hecl")
+
+[node name="TargetRadius" type="Node2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="TargetRadius"]
+
+[node name="vision_sphere" type="CollisionShape2D" parent="TargetRadius/Area2D2"]
+shape = SubResource("CircleShape2D_hica2")
+
+[connection signal="body_entered" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_entered"]
+[connection signal="body_exited" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_exited"]

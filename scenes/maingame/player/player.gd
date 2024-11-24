@@ -24,13 +24,16 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
+@onready var ouch_sound := $Ouch as AudioStreamPlayer2D
 @onready var spit: SpitNut = sprite.get_node(^"SpitNut")
 @onready var melee: MeleeAttack = sprite.get_node(^"Melee")
 @onready var camera := $Camera as Camera2D
 
 var _isClimbing := false
 
+
 @onready var health_ui_amount = $UI/HealthLabel/HealthAmount
+@onready var acorns_ui_amount = $UI/AcornLabel/AcornAmount
 @onready var collision_shape = $CollisionShape2D
 var _double_jump_charged := false
 
@@ -44,6 +47,11 @@ const FRAME_FLICKER_AMOUNT = 4
 			health_ui_amount.text = str(value)
 			
 @export var IFRAME_DURATION_IN_MS := 400.0
+
+@export var ACORNS := 0 :
+		set(value):
+			ACORNS = value
+			acorns_ui_amount.text = str(value)
 			
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
@@ -90,8 +98,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var is_shooting := false
-	if Input.is_action_just_pressed("spit" + action_suffix):
+	if Input.is_action_just_pressed("spit" + action_suffix) and ACORNS > 0:
 		is_shooting = spit.shoot(sprite.scale.x)
+		ACORNS -= 1
 
 	var is_attacking := false
 	if Input.is_action_just_pressed("melee" + action_suffix):
@@ -125,9 +134,6 @@ func get_new_animation(is_shooting := false) -> String:
 	if _is_damage_state:
 		animation_new = "damaged"
 	
-	
-	
-	
 	return animation_new
 
 
@@ -141,18 +147,20 @@ func try_jump() -> void:
 	
 func hit(damage, source: Node):
 	if _is_damage_state == false:
+		ouch_sound.play()
 		CURRENT_HEALTH -= damage
 		if (CURRENT_HEALTH <= 0):
 			died.emit()
 		else:
 			_is_damage_state = true
-			if (source is Enemy):
-				var enemy = source
 				
-				# push the player back
+			if (source is Hornet):
+				velocity = source.velocity * 2
+			else:
+			# push the player back
 				velocity = -velocity
-				if (abs(velocity.x) > abs(velocity.y)):
-					velocity.x *= 1.5 
+			if (abs(velocity.x) > abs(velocity.y)):
+				velocity.x *= 1.5 
 		
 			await trigger_invincible(IFRAME_DURATION_IN_MS)
 		
@@ -170,4 +178,8 @@ func trigger_invincible(duration_in_ms) -> void:
 	# Replace with function body.
 
 func _on_boss_zone_trigger() -> void:
-	bossZoneTriggerPlayer.emit()
+	bossZoneTriggerPlayer.emit()	
+
+func acorn_collected() -> void:
+	ACORNS = ACORNS + 1
+	print(ACORNS)
