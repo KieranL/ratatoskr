@@ -20,7 +20,7 @@ Check out the demo this was based from in the asset library: https://godotengine
 
 ## Screenshots
 
-![2D Platformer](screenshots/RatatoskrWithHorn.png)
+![2D Platformer](screenshots/screenshot.png)
 
 ## Music
 
