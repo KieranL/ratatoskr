@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dl74ruxxetvgv" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
 [ext_resource type="PackedScene" path="res://scenes/maingame/gui/acorn_screen_transition.tscn" id="7_hja7s"]
 [ext_resource type="Script" path="res://scenes/maingame/level/bossZoneTrigger.gd" id="7_oj8dg"]
-[ext_resource type="PackedScene" path="res://scenes/maingame/gui/WinMenu.tscn" id="8_aamoj"]
+[ext_resource type="PackedScene" uid="uid://dbynx5ixhjwfg" path="res://scenes/maingame/gui/WinMenu.tscn" id="8_aamoj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ls2sj"]
 size = Vector2(45, 468)

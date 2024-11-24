@@ -13,8 +13,8 @@ script = ExtResource("1_ees0v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 799.0
-offset_bottom = 479.0
+offset_right = 800.0
+offset_bottom = 480.0
 color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
@@ -22,10 +22,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 1.0
-offset_bottom = 2.0
+offset_top = -200.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 
