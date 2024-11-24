@@ -1783,6 +1783,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BossTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_e8gg0")
+volume_db = 8.0
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_s2h18")
