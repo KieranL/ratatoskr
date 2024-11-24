@@ -4,6 +4,7 @@ extends Node
 @onready var _pause_menu := $InterfaceLayer/PauseMenu as PauseMenu
 @onready var _game_over_menu := $InterfaceLayer/GameOverMenu as GameOverMenu
 @onready var _acorn_transition := $InterfaceLayer/AcornScreenTransition as AcornScreenTransition
+@onready var _win_menu := $InterfaceLayer/WinMenu as WinMenu
 
 var is_game_over := false
 var is_acorn_transition := false

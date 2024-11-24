@@ -12,5 +12,5 @@ func open() -> void:
 func _on_button_pressed() -> void:
 	game_restart.emit()
 
-func _on_level_win_game_trigger() -> void:
+func _on_level_win_game() -> void:
 	open()
