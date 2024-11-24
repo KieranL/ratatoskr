@@ -1,7 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsevj1qewd45y"]
+[gd_scene load_steps=9 format=3 uid="uid://dsevj1qewd45y"]
 
-[ext_resource type="Texture2D" uid="uid://c3medml07qtaf" path="res://Assets/Art/enemies/hornet/hornet.jpg" id="1_cd6wb"]
 [ext_resource type="Script" path="res://scenes/maingame/enemies/hornet/hornet.gd" id="1_fgc2m"]
+[ext_resource type="Texture2D" uid="uid://p54xcp2x1ad5" path="res://Assets/Art/enemies/hornet/Hornet.webp" id="2_ayl5i"]
+
+[sub_resource type="Animation" id="Animation_obqnu"]
+resource_name = "Flying"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ykh5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_1kbng"]
+resource_name = "Attack"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_er65d"]
+_data = {
+"Attack": SubResource("Animation_1kbng"),
+"Flying": SubResource("Animation_obqnu"),
+"RESET": SubResource("Animation_ykh5o")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hecl"]
 radius = 25.0
@@ -17,8 +73,16 @@ motion_mode = 1
 script = ExtResource("1_fgc2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.284153, 0.284153)
-texture = ExtResource("1_cd6wb")
+texture = ExtResource("2_ayl5i")
+hframes = 5
+vframes = 5
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_er65d")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0hecl")
