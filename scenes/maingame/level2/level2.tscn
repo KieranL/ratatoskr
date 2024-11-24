@@ -161,16 +161,10 @@ stream = ExtResource("5_vetwv")
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Platform2" parent="Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(771, -2112)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
-libraries = {
-"": SubResource("AnimationLibrary_5figo")
-}
-autoplay = "RESET"
+position = Vector2(729, -2121)
 
 [node name="Platform3" parent="Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(771, -2112)
+position = Vector2(758, -2536)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform3"]
 libraries = {
