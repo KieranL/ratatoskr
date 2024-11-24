@@ -442,7 +442,7 @@ texture = ExtResource("19")
 [node name="f4" type="Sprite2D" parent="Grass"]
 z_index = -1
 material = ExtResource("18")
-position = Vector2(973, -10)
+position = Vector2(798, -192)
 texture = ExtResource("19")
 
 [node name="F5" type="Sprite2D" parent="Grass"]
@@ -1371,7 +1371,7 @@ CONTACT_DAMAGE = 35
 position = Vector2(772, 561)
 
 [node name="Spwaner" parent="Enemies" instance=ExtResource("16_06gec")]
-position = Vector2(1242, -66)
+position = Vector2(1277, -54)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("7")]
 
@@ -1399,7 +1399,7 @@ texture = ExtResource("14")
 
 [node name="T10" type="Sprite2D" parent="Trees"]
 material = ExtResource("18")
-position = Vector2(1140, -48)
+position = Vector2(254, -235)
 texture = ExtResource("14")
 
 [node name="T2" type="Sprite2D" parent="Trees"]
@@ -1534,7 +1534,7 @@ offset = Vector2(35.3364, -1.40192)
 [node name="B33" type="Sprite2D" parent="Bushes"]
 z_index = -2
 material = ExtResource("18")
-position = Vector2(1141.31, -16.4639)
+position = Vector2(861, -198)
 texture = ExtResource("16")
 
 [node name="B34" type="Sprite2D" parent="Bushes"]
@@ -1734,7 +1734,7 @@ texture = ExtResource("17")
 
 [node name="R4" type="Sprite2D" parent="Rocks"]
 z_index = -2
-position = Vector2(1048, -17)
+position = Vector2(1071, -9)
 texture = ExtResource("17")
 
 [node name="R13" type="Sprite2D" parent="Rocks"]
