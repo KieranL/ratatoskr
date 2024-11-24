@@ -24,6 +24,7 @@ visible = false
 visible = false
 
 [node name="LevelNode" type="Node" parent="."]
+process_mode = 1
 
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
 [connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="_on_acorn_screen_transition_finish"]
