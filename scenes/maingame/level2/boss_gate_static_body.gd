@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+signal trigger_boss_music()
 @onready var gateSprite := $BossGateSprite
 
 var _isGateClosed = false
@@ -21,3 +22,4 @@ func closeGate() -> void:
 func _on_mini_boss_trigger_area_body_entered(body: Node2D) -> void:	
 	if !_isGateClosed:
 		closeGate()
+		trigger_boss_music.emit()
