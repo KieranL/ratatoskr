@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://dsevj1qewd45y" path="res://scenes/maingame/enemies/hornet/hornet.tscn" id="4_ljewf"]
+[ext_resource type="PackedScene" path="res://scenes/maingame/enemies/hornet/hornet.tscn" id="4_ljewf"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
 [ext_resource type="PackedScene" uid="uid://d17sdkea6x42w" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
 

@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bu54lwrkcng25" path="res://Assets/Art/vine_2.webp" id="7"]
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="8"]
 
-
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(192, 27)
 
