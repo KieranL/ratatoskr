@@ -38,6 +38,9 @@ func _on_player_died() -> void:
 
 func _on_game_over_menu_game_restart() -> void:
 	reload_game()
+	
+func _on_win_menu_game_restart() -> void:
+	reload_game()
 
 func reload_game() -> void:
 	var tree := get_tree()
