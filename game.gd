@@ -5,11 +5,36 @@ extends Node
 @onready var _game_over_menu := $InterfaceLayer/GameOverMenu as GameOverMenu
 @onready var _acorn_transition := $InterfaceLayer/AcornScreenTransition as AcornScreenTransition
 @onready var _win_menu := $InterfaceLayer/WinMenu as WinMenu
+@onready var _level_node := $LevelNode
 
 var is_game_over := false
 var is_acorn_transition := false
 
+enum LEVEL {
+	LEVEL_1,
+	LEVEL_2
+}
+
+@export var CURRENT_LEVEL := LEVEL.LEVEL_2 :
+	set (value):
+		var tree = get_tree()
+		tree.paused = true
+		for child in _level_node.get_children():
+			_level_node.remove_child(child)
+		if(value == LEVEL.LEVEL_1):
+			var level:PackedScene = load("res://scenes/maingame/level/level.tscn")
+			var new_level = level.instantiate()
+			new_level.connect("playerDied", _on_player_died)
+			_level_node.add_child(new_level)
+		if(value == LEVEL.LEVEL_2):
+			var level:PackedScene = load("res://scenes/maingame/level2/level2.tscn")
+			var new_level = level.instantiate()
+			new_level.connect("playerDied", _on_player_died)
+			_level_node.add_child(new_level)
+		start_acorn_transition()
+
 func _ready() -> void:
+	CURRENT_LEVEL = LEVEL.LEVEL_2
 	start_acorn_transition()
 
 func _unhandled_input(event: InputEvent) -> void:

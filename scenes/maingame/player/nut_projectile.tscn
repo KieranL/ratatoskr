@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfhh6r6rtpxhv"]
+[gd_scene load_steps=12 format=3 uid="uid://bfhh6r6rtpxhv"]
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/player/nut_projectile.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://bb65yk661f6sk" path="res://Assets/SoundEffects/AcornHit.wav" id="3_3u5ik"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 
@@ -117,6 +118,9 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_iv8gr")
 }
+
+[node name="Bounce" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3u5ik")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="destroy"]

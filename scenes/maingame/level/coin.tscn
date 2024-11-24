@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3dh7xb6ef76q"]
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_xysef"]
-[ext_resource type="AudioStream" uid="uid://w4j7xs5uhoer" path="res://Assets/SoundEffects/coin_pickup.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://d14lhwr070dsd" path="res://Assets/SoundEffects/CollectAcorn.wav" id="3_g3gk7"]
 [ext_resource type="Script" path="res://scenes/maingame/level/coin.gd" id="4"]
 
 [sub_resource type="Animation" id="Animation_4kkvr"]
@@ -107,7 +107,7 @@ tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("3")
+"stream": ExtResource("3_g3gk7")
 }],
 "times": PackedFloat32Array(0)
 }
