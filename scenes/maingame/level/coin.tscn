@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3dh7xb6ef76q"]
 
-[ext_resource type="Texture2D" uid="uid://cj2absxg54f75" path="res://Assets/Art/coin.webp" id="1"]
+[ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_xysef"]
 [ext_resource type="AudioStream" uid="uid://w4j7xs5uhoer" path="res://Assets/SoundEffects/coin_pickup.wav" id="3"]
 [ext_resource type="Script" path="res://scenes/maingame/level/coin.gd" id="4"]
 
@@ -18,6 +18,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="1"]
 resource_name = "picked"
@@ -30,10 +42,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.25),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0, 11]
+"values": [0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -112,10 +124,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16675, 0.3335, 0.50025, 0.667, 0.83375, 1.0005),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 2, 1, 0]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,10 +136,10 @@ tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0001, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 2,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(2, 1), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -170,10 +182,7 @@ monitorable = false
 script = ExtResource("4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("1")
-hframes = 8
-vframes = 2
+texture = ExtResource("2_xysef")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
