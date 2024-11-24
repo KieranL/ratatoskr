@@ -68,7 +68,6 @@ process_mode = 1
 position = Vector2(0, -5)
 
 [node name="TileMap" type="TileMap" parent="."]
-z_index = 1
 position = Vector2(0, 12)
 tile_set = ExtResource("1")
 rendering_quadrant_size = 32
