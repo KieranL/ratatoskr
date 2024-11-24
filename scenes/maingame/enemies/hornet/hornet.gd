@@ -4,6 +4,8 @@ extends CharacterBody2D
 signal died()
 
 @onready var sprite := $Sprite2D as Sprite2D
+@onready var animation_player := $AnimationPlayer as AnimationPlayer
+@onready var collision_shape := $CollisionShape2D
 
 @export var ROAM_COOLDOWN_IN_MS := 3000
 
@@ -44,6 +46,10 @@ func _ready() -> void:
 	home = get_parent().get_node("RoamRadius/Area2D/roam_sphere")
 
 func _physics_process(delta: float) -> void:
+	var animation := get_new_animation()
+	if animation != animation_player.current_animation:
+		animation_player.play(animation)
+	
 	if (_state == State.HUNTING):
 		target_location = target.position
 		
@@ -57,9 +63,9 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_zero_approx(velocity.x):
 		if velocity.x > 0.5:
-			sprite.flip_h = true
-		else:
 			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
 
 	if _state != State.DEAD:
 		var collision_occured = move_and_slide()
@@ -135,3 +141,12 @@ func trigger_invincible(duration_in_ms) -> void:
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
 		sprite.visible = true
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
+
+
+func get_new_animation() -> StringName:
+	var animation_new: StringName
+	if _state == State.HUNTING:
+			animation_new = &"Attack"
+	else:
+		animation_new = &"Flying"
+	return animation_new
