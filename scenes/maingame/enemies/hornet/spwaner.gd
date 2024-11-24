@@ -17,6 +17,8 @@ const FRAME_FLICKER_TIME = 400
 
 var hornet_scene = preload("res://scenes/maingame/enemies/hornet/entity.tscn")
 
+var _is_hit = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
@@ -33,12 +35,15 @@ func _process(delta: float) -> void:
 	pass
 	
 func take_damage(damage) -> void:
-	CURRENT_HEALTH -= damage
+	if _is_hit == false:
+		_is_hit = true
+		CURRENT_HEALTH -= damage
 	
-	trigger_invincible(FRAME_FLICKER_TIME)
+		await trigger_invincible(FRAME_FLICKER_TIME)
 	
-	if CURRENT_HEALTH <= 0:
-		destroy()
+		if CURRENT_HEALTH <= 0:
+			destroy()
+		_is_hit = false
 		
 func destroy() -> void:
 	for child in hornets.get_children():
@@ -65,7 +70,6 @@ func spawn_hornet() -> void:
 		
 	
 func _hornet_died() -> void:
-	print("killed a guy")
 	_current_spawned -= 1
 	
 func trigger_invincible(duration_in_ms) -> void:
