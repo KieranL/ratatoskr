@@ -4,8 +4,8 @@ signal winGame()
 signal playerDied()
 
 @onready var bossGate := $Gate/BossGate as BossGate
-@onready var boss_music := $BossTheme as AudioStreamPlayer2D
-@onready var main_music := $MainTheme as AudioStreamPlayer2D
+@onready var boss_music := $Player/BossTheme as AudioStreamPlayer2D
+@onready var main_music := $Player/MainTheme as AudioStreamPlayer2D
 
 func _on_boss_zone_trigger() -> void:
 	main_music.stop()

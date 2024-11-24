@@ -1,9 +1,11 @@
-[gd_scene load_steps=28 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=33 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1_1aeog"]
+[ext_resource type="Script" path="res://scenes/maingame/level2/level_2.gd" id="1_rkwk0"]
 [ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://scenes/maingame/level/background/parallax_background.tscn" id="2_7d3jx"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="3_dk8vk"]
 [ext_resource type="PackedScene" uid="uid://cky6e5nl0nyod" path="res://scenes/maingame/level/platforms/platform.tscn" id="4_1luut"]
+[ext_resource type="AudioStream" uid="uid://discn7bbcype8" path="res://Assets/Music/Boss Theme.ogg" id="5_vetwv"]
 [ext_resource type="PackedScene" uid="uid://6mtip3ruyn" path="res://scenes/maingame/enemy/enemy.tscn" id="5_xb7g0"]
 [ext_resource type="Material" uid="uid://djwm5nol3d801" path="res://Assets/Art/wind_sway.tres" id="6_dpy45"]
 [ext_resource type="PackedScene" uid="uid://c3dh7xb6ef76q" path="res://scenes/maingame/level/coin.tscn" id="6_th6u2"]
@@ -19,7 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cqydct6vajobg" path="res://Assets/Art/bush_1.webp" id="15_6vwkv"]
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="16_kavr8"]
 [ext_resource type="Script" path="res://scenes/maingame/level2/boss_gate_static_body.gd" id="18_4u0pi"]
+[ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="18_6jhg8"]
 [ext_resource type="Texture2D" uid="uid://d0wfh08ouh3mv" path="res://Assets/Art/gate.webp" id="18_ae2ve"]
+[ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/level/heal_berry.tscn" id="18_ca7db"]
 
 [sub_resource type="Animation" id="Animation_oqejb"]
 length = 12.0
@@ -129,6 +133,7 @@ size = Vector2(23, 276)
 size = Vector2(27, 273)
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_rkwk0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
@@ -141,6 +146,16 @@ tile_set = ExtResource("1_1aeog")
 
 [node name="Player" parent="." instance=ExtResource("3_dk8vk")]
 position = Vector2(249, 370)
+
+[node name="MainTheme" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-311.25, -462.5)
+scale = Vector2(1.25, 1.25)
+stream = ExtResource("18_6jhg8")
+autoplay = true
+
+[node name="BossTheme" type="AudioStreamPlayer2D" parent="Player"]
+scale = Vector2(1, 1)
+stream = ExtResource("5_vetwv")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -3590,6 +3605,10 @@ position = Vector2(30, -10)
 [node name="Coin3" parent="Acorns/CoinsArc25" instance=ExtResource("6_th6u2")]
 position = Vector2(60, 0)
 
+[node name="HealBerry" parent="." instance=ExtResource("18_ca7db")]
+z_index = 4
+position = Vector2(2602, -503)
+
 [node name="MiniBossTriggerArea" type="Area2D" parent="."]
 position = Vector2(1965, -2559)
 
@@ -3610,5 +3629,7 @@ position = Vector2(-2, -430)
 scale = Vector2(0.58, 0.664)
 texture = ExtResource("18_ae2ve")
 
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="MiniBossTriggerArea" to="Player" method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="body_entered" from="MiniBossTriggerArea" to="BossGateStaticBody" method="_on_mini_boss_trigger_area_body_entered"]
+[connection signal="trigger_boss_music" from="BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
