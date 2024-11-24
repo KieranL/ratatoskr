@@ -30,6 +30,7 @@ enum LEVEL {
 			var level:PackedScene = load("res://scenes/maingame/level2/level2.tscn")
 			var new_level = level.instantiate()
 			new_level.connect("playerDied", _on_player_died)
+			new_level.connect("playerWin", _on_player_win)
 			_level_node.add_child(new_level)
 		start_acorn_transition()
 
@@ -66,6 +67,8 @@ func _on_player_died() -> void:
 	tree.paused = true
 	_game_over_menu.triggerMenu()
 
+func _on_player_win() -> void:
+	_win_menu.open()
 
 func _on_game_over_menu_game_restart() -> void:
 	reload_game()

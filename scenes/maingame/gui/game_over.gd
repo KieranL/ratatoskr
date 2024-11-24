@@ -11,10 +11,6 @@ signal game_restart()
 func _ready() -> void:
 	hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func triggerMenu():
 	show();
 	background_animation_player.play("background_fade")
