@@ -27,10 +27,6 @@ config/icon="res://Assets/Art/icon.webp"
 
 buses/default_bus_layout="res://Assets/Music/default_bus_layout.tres"
 
-; [autoload]
-
-; Music="*res://music.tscn"
-
 [debug]
 
 gdscript/warnings/untyped_declaration=1

@@ -99,7 +99,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("spit" + action_suffix) and ACORNS > 0:
 		is_shooting = spit.shoot(sprite.scale.x)
-		ACORNS -= 1
+		if is_shooting:
+			ACORNS -= 1
 
 	var is_attacking := false
 	_isMelee = false
