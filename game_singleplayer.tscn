@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/maingame/enemies/hornet/hornet.tscn" id="4_ljewf"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
-[ext_resource type="PackedScene" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
+[ext_resource type="PackedScene" uid="uid://d17sdkea6x42w" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
 [ext_resource type="Script" path="res://scenes/maingame/level/bossZoneTrigger.gd" id="7_oj8dg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ls2sj"]
