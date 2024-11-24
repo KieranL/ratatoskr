@@ -1,6 +1,8 @@
 class_name HornetNest
 extends CharacterBody2D
 
+signal spawnerDeath()
+
 @export var MAX_SPAWNED_AT_ONE_TIME := 3
 @export var SPAWN_COOLDOWN_IN_MS := 7500.0
 @export var MAX_HEALTH := 750
@@ -47,6 +49,8 @@ func take_damage(damage) -> void:
 		_is_hit = false
 		
 func destroy() -> void:
+	spawnerDeath.emit()
+	
 	for child in hornets.get_children():
 		hornets.remove_child(child)
 	queue_free()
