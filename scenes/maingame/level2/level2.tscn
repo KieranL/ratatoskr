@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=28 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1_1aeog"]
 [ext_resource type="Script" path="res://scenes/maingame/level2/level_2.gd" id="1_rkwk0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c3dh7xb6ef76q" path="res://scenes/maingame/level/coin.tscn" id="6_th6u2"]
 [ext_resource type="Texture2D" uid="uid://dea1a76o6b0ix" path="res://Assets/Art/tree_2.webp" id="7_27bgk"]
 [ext_resource type="Texture2D" uid="uid://icddaryasunc" path="res://Assets/Art/tree_1.webp" id="8_gsrq8"]
+[ext_resource type="PackedScene" uid="uid://dgkyv2jpr1cbi" path="res://scenes/maingame/enemies/hornet/spwaner.tscn" id="8_urhbx"]
 [ext_resource type="Texture2D" uid="uid://bj6am5nfc0k73" path="res://Assets/Art/grass_1.webp" id="9_fnsri"]
 [ext_resource type="Texture2D" uid="uid://bju7r7jqn8bqy" path="res://Assets/Art/grass_2.webp" id="10_r4mc3"]
 [ext_resource type="Texture2D" uid="uid://upfcr5xg5fvh" path="res://Assets/Art/grass_3.webp" id="11_hvc4s"]
@@ -268,6 +269,9 @@ position = Vector2(1471, -1247)
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource("5_xb7g0")]
 position = Vector2(2439, -1884)
+
+[node name="Spwaner" parent="Enemies" instance=ExtResource("8_urhbx")]
+position = Vector2(2708, -2640)
 
 [node name="MiniBoss" type="Node" parent="."]
 
