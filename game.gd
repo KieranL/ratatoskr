@@ -15,7 +15,7 @@ enum LEVEL {
 	LEVEL_2
 }
 
-@export var CURRENT_LEVEL := LEVEL.LEVEL_1 :
+@export var CURRENT_LEVEL := LEVEL.LEVEL_2 :
 	set (value):
 		var tree = get_tree()
 		tree.paused = true
@@ -34,7 +34,7 @@ enum LEVEL {
 		start_acorn_transition()
 
 func _ready() -> void:
-	CURRENT_LEVEL = LEVEL.LEVEL_1
+	CURRENT_LEVEL = LEVEL.LEVEL_2
 	start_acorn_transition()
 
 func _unhandled_input(event: InputEvent) -> void:
