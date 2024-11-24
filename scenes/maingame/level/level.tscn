@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctgumjaytuoch"]
+[gd_scene load_steps=29 format=3 uid="uid://ctgumjaytuoch"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/level/level.gd" id="1_4uv34"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://crfy1osk1c1gc" path="res://Assets/Art/ground_flowers_1.webp" id="20"]
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="21"]
 [ext_resource type="Texture2D" uid="uid://bu54lwrkcng25" path="res://Assets/Art/vine_2.webp" id="22"]
+[ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "move"
@@ -1742,5 +1743,19 @@ z_index = -2
 position = Vector2(72, 639)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17")
+
+[node name="HealBerries" type="Node" parent="."]
+
+[node name="HealBerry" parent="HealBerries" instance=ExtResource("24_51uf8")]
+position = Vector2(83, 302)
+monitorable = false
+
+[node name="HealBerry2" parent="HealBerries" instance=ExtResource("24_51uf8")]
+position = Vector2(937, -1126)
+monitorable = false
+
+[node name="HealBerry3" parent="HealBerries" instance=ExtResource("24_51uf8")]
+position = Vector2(-521, -15)
+monitorable = false
 
 [connection signal="winGameTrigger" from="Enemies/Boss" to="." method="_on_boss_win_game_trigger"]
