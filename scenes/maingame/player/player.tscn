@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=29 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/maingame/player/melee_attack.gd" id="5_sjml7"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="AudioStream" uid="uid://b276fh0va78ks" path="res://Assets/SoundEffects/Scratch Attack.wav" id="6_hjkub"]
+[ext_resource type="AudioStream" uid="uid://c1bg5c8v4liuv" path="res://Assets/SoundEffects/Jetpack.wav" id="7_hettp"]
 [ext_resource type="Script" path="res://scenes/maingame/player/camera.gd" id="7_lps7a"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 [ext_resource type="AudioStream" uid="uid://ck8s5wwxavhxv" path="res://Assets/SoundEffects/SquirelHit.wav" id="10_0anyv"]
@@ -43,6 +44,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [45, 46]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_hettp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="1"]
 resource_name = "crouch"
@@ -157,6 +173,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [44]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="7"]
 length = 0.5
@@ -300,6 +342,8 @@ libraries = {
 "": SubResource("AnimationLibrary_jnr5f")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
@@ -315,7 +359,6 @@ shape = SubResource("11")
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5")
-volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0

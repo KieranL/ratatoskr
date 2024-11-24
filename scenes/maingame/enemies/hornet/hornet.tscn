@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsevj1qewd45y"]
+[gd_scene load_steps=10 format=3 uid="uid://dsevj1qewd45y"]
 
 [ext_resource type="Script" path="res://scenes/maingame/enemies/hornet/hornet.gd" id="1_fgc2m"]
 [ext_resource type="Texture2D" uid="uid://p54xcp2x1ad5" path="res://Assets/Art/enemies/hornet/Hornet.webp" id="2_ayl5i"]
+[ext_resource type="AudioStream" uid="uid://ybdnm61c68u0" path="res://Assets/SoundEffects/WaspHit.wav" id="3_je331"]
 
 [sub_resource type="Animation" id="Animation_1kbng"]
 resource_name = "Attack"
@@ -93,6 +94,9 @@ shape = SubResource("CapsuleShape2D_0hecl")
 
 [node name="vision_sphere" type="CollisionShape2D" parent="TargetRadius/Area2D2"]
 shape = SubResource("CircleShape2D_hica2")
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_je331")
 
 [connection signal="body_entered" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_entered"]
 [connection signal="body_exited" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_exited"]

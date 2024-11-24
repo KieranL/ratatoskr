@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgkyv2jpr1cbi"]
 
 [ext_resource type="Script" path="res://scenes/maingame/enemies/hornet/spwaner.gd" id="1_wextk"]
-[ext_resource type="Texture2D" uid="uid://j8g23oopya3l" path="res://Assets/Art/enemies/hornet/nest.png" id="2_ll6xq"]
+[ext_resource type="Texture2D" uid="uid://bo738s7awa6j1" path="res://Assets/Art/enemies/hornet/nest.png" id="2_ll6xq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8tv5"]
 radius = 75.2396
