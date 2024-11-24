@@ -179,3 +179,14 @@ func _on_boss_zone_trigger() -> void:
 
 func acorn_collected() -> void:
 	ACORNS = ACORNS + 1
+	
+func healberry_collected(heal_amount) -> void:
+	var new_health_theoretical = min(CURRENT_HEALTH, MAX_HEALTH) + heal_amount
+	var new_health_actual = CURRENT_HEALTH if CURRENT_HEALTH > MAX_HEALTH else min(MAX_HEALTH, new_health_theoretical)
+		
+	var healed_amount = max(new_health_actual - CURRENT_HEALTH, 0)
+	var overheal = floor((heal_amount - healed_amount) / 2)
+
+	CURRENT_HEALTH = new_health_actual + overheal
+	
+	
