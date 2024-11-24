@@ -255,16 +255,20 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Walking")
+tracks/1/path = NodePath("AnimationPlayer/Walking")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 0.0,
+"end_offset": 0.73189,
 "start_offset": 0.0,
 "stream": ExtResource("12_jek34")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.6)
 }
 tracks/1/use_blend = true
 
@@ -382,6 +386,9 @@ libraries = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
 volume_db = -5.0
 
+[node name="Walking" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+scale = Vector2(0.8, 0.8)
+
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
@@ -458,7 +465,5 @@ label_settings = SubResource("LabelSettings_8v8mq")
 
 [node name="Ouch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_0anyv")
-
-[node name="Walking" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
