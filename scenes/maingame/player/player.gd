@@ -202,3 +202,7 @@ func healberry_collected(heal_amount) -> void:
 	CURRENT_HEALTH = new_health_actual + overheal
 	
 	
+
+
+func _on_died() -> void:
+	pass # Replace with function body.
