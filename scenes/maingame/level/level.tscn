@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://upfcr5xg5fvh" path="res://Assets/Art/grass_3.webp" id="13"]
 [ext_resource type="Texture2D" uid="uid://icddaryasunc" path="res://Assets/Art/tree_1.webp" id="14"]
 [ext_resource type="Texture2D" uid="uid://dea1a76o6b0ix" path="res://Assets/Art/tree_2.webp" id="15"]
-[ext_resource type="PackedScene" path="res://scenes/maingame/enemies/hornet/entity.tscn" id="15_cjxsr"]
+[ext_resource type="PackedScene" uid="uid://dafavqaic6lhx" path="res://scenes/maingame/enemies/hornet/entity.tscn" id="15_cjxsr"]
 [ext_resource type="Texture2D" uid="uid://cqydct6vajobg" path="res://Assets/Art/bush_1.webp" id="16"]
 [ext_resource type="Script" path="res://scenes/maingame/enemy/boss.gd" id="16_1by48"]
 [ext_resource type="PackedScene" uid="uid://dgkyv2jpr1cbi" path="res://scenes/maingame/enemies/hornet/spwaner.tscn" id="16_06gec"]
