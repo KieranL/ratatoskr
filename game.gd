@@ -24,15 +24,17 @@ enum LEVEL {
 		if(value == LEVEL.LEVEL_1):
 			var level:PackedScene = load("res://scenes/maingame/level/level.tscn")
 			var new_level = level.instantiate()
+			new_level.connect("playerDied", _on_player_died)
 			_level_node.add_child(new_level)
 		if(value == LEVEL.LEVEL_2):
 			var level:PackedScene = load("res://scenes/maingame/level2/level2.tscn")
 			var new_level = level.instantiate()
+			new_level.connect("playerDied", _on_player_died)
 			_level_node.add_child(new_level)
 		start_acorn_transition()
 
 func _ready() -> void:
-	CURRENT_LEVEL = LEVEL.LEVEL_2
+	CURRENT_LEVEL = LEVEL.LEVEL_1
 	start_acorn_transition()
 
 func _unhandled_input(event: InputEvent) -> void:

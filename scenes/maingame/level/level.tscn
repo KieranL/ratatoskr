@@ -1806,4 +1806,5 @@ position = Vector2(431, -917)
 shape = SubResource("RectangleShape2D_1oi6y")
 
 [connection signal="winGameTrigger" from="Enemies/Boss" to="." method="_on_boss_win_game_trigger"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="BossTriggerArea" to="BossTriggerArea" method="_on_body_entered"]
