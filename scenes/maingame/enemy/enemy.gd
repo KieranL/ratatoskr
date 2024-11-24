@@ -17,6 +17,7 @@ var _state := State.WALKING
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var collision_shape := $CollisionShape2D
+@onready var damaged_sound := $Damaged as AudioStreamPlayer2D
 
 @export var HEALTH := 100
 @export var CONTACT_DAMAGE := 25
@@ -61,7 +62,7 @@ func destroy() -> void:
 	
 func take_damage(damage) -> void:
 	HEALTH -= damage
-	
+	damaged_sound.play()
 	await trigger_invincible(FRAME_FLICKER_TIME)
 	
 	if HEALTH <= 0:
