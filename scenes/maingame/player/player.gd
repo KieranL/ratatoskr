@@ -29,13 +29,11 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var melee: MeleeAttack = sprite.get_node(^"Melee")
 @onready var camera := $Camera as Camera2D
 
-var _isClimbing := false
-
+var _isFlying := false
 
 @onready var health_ui_amount = $UI/HealthLabel/HealthAmount
 @onready var acorns_ui_amount = $UI/AcornLabel/AcornAmount
 @onready var collision_shape = $CollisionShape2D
-var _double_jump_charged := false
 
 var _is_damage_state := false
 const FRAME_FLICKER_AMOUNT = 4
@@ -59,12 +57,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
-		_isClimbing = false
-		
-	if Input.is_action_just_pressed("toggle_climb"):
-		_isClimbing = !_isClimbing
-		velocity.y = 0
-		velocity.x = 0	
+		_isFlying = false
 	
 	if Input.is_action_just_pressed("jump" + action_suffix):
 		try_jump()
@@ -72,21 +65,16 @@ func _physics_process(delta: float) -> void:
 		# The player let go of jump early, reduce vertical momentum.
 		velocity.y *= 0.6
 	
-	# Fall if not climbing	
-	if !_isClimbing:
-		velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)	
+	# Fall if not flying	
+	if !_isFlying:
+		velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
+	else:
+		var yDirection := Input.get_axis("move_up" + action_suffix, "move_down" + action_suffix) * WALK_SPEED
+		velocity.y = move_toward(velocity.y, yDirection, ACCELERATION_SPEED * delta)	
 
 	var xDirection := Input.get_axis("move_left" + action_suffix, "move_right" + action_suffix)
-	
-	if _isClimbing:
-		var yDirection := Input.get_axis("move_up" + action_suffix, "move_down" + action_suffix) * WALK_SPEED
-		velocity.y = move_toward(velocity.y, yDirection, ACCELERATION_SPEED * delta)
-		
-		xDirection *= CLIMB_HORIZONTAL_SPEED
-		velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)
-	else:		
-		xDirection *= WALK_SPEED
-		velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)
+	xDirection *= WALK_SPEED
+	velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)			
 
 	if not is_zero_approx(velocity.x) and not _is_damage_state:
 		if velocity.x > 0.0:
@@ -128,7 +116,7 @@ func get_new_animation(is_shooting := false) -> String:
 	if is_shooting:
 		animation_new += "_weapon"
 		
-	if _isClimbing:
+	if _isFlying:
 		animation_new = "climb"	
 		
 	if _is_damage_state:
@@ -142,8 +130,10 @@ func try_jump() -> void:
 		jump_sound.pitch_scale = 1.0
 		velocity.y = JUMP_VELOCITY
 		jump_sound.play()
+	elif _isFlying == true:
+		_isFlying = false
 	else:
-		return
+		_isFlying = true
 	
 func hit(damage, source: Node):
 	if _is_damage_state == false:
@@ -182,4 +172,3 @@ func _on_boss_zone_trigger() -> void:
 
 func acorn_collected() -> void:
 	ACORNS = ACORNS + 1
-	print(ACORNS)
