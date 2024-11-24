@@ -26,9 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_pause_menu.close()
 			get_tree().root.set_input_as_handled()
 	elif event.is_action_pressed("reload_scene") and not is_game_over:
-		reload_game()
-
-
+		reload_game()	
+	
 func _on_player_died() -> void:
 	is_game_over = true
 	var tree := get_tree()
@@ -37,6 +36,9 @@ func _on_player_died() -> void:
 
 
 func _on_game_over_menu_game_restart() -> void:
+	reload_game()
+	
+func _on_win_menu_game_restart() -> void:
 	reload_game()
 
 func reload_game() -> void:
