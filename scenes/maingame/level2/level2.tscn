@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=25 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1_1aeog"]
 [ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://scenes/maingame/level/background/parallax_background.tscn" id="2_7d3jx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c5xpotfxdi0ms" path="res://Assets/Art/fern_1.webp" id="14_da4fx"]
 [ext_resource type="Texture2D" uid="uid://cqydct6vajobg" path="res://Assets/Art/bush_1.webp" id="15_6vwkv"]
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="16_kavr8"]
+[ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/level/heal_berry.tscn" id="18_ca7db"]
 
 [sub_resource type="Animation" id="Animation_oqejb"]
 length = 12.0
@@ -3577,3 +3578,7 @@ position = Vector2(30, -10)
 
 [node name="Coin3" parent="Acorns/CoinsArc25" instance=ExtResource("6_th6u2")]
 position = Vector2(60, 0)
+
+[node name="HealBerry" parent="." instance=ExtResource("18_ca7db")]
+z_index = 4
+position = Vector2(2602, -503)
