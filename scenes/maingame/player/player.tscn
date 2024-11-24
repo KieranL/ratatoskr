@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=31 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scenes/maingame/player/camera.gd" id="7_lps7a"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 [ext_resource type="AudioStream" uid="uid://ck8s5wwxavhxv" path="res://Assets/SoundEffects/SquirelHit.wav" id="10_0anyv"]
+[ext_resource type="AudioStream" uid="uid://c0xg12w68m48b" path="res://Assets/SoundEffects/PitterPatter.wav" id="12_jek34"]
 
 [sub_resource type="Animation" id="Animation_1ue6o"]
 length = 0.001
@@ -251,6 +252,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 0, 0, 0, 0, 5, 5, 5, 5, 5]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Walking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_jek34")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="9"]
 length = 0.6
@@ -442,5 +458,7 @@ label_settings = SubResource("LabelSettings_8v8mq")
 
 [node name="Ouch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_0anyv")
+
+[node name="Walking" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
