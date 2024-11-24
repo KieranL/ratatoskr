@@ -24,4 +24,4 @@ Check out the demo this was based from in the asset library: https://godotengine
 
 ## Music
 
-[*Pompy*](https://soundcloud.com/madbr/pompy) by Hubert Lamontagne (madbr)
+[*Viking Rat Oscar*](Assets/Music) by Ratatoskr devs
