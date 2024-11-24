@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf3wnwihk7ymg"]
+[gd_scene load_steps=8 format=3 uid="uid://bf3wnwihk7ymg"]
 
 [ext_resource type="Script" path="res://game.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3"]
@@ -18,10 +18,6 @@ script = ExtResource("2")
 
 [node name="Player" parent="Level" instance=ExtResource("4")]
 position = Vector2(-92, 610)
-
-[node name="hornets" type="Node" parent="Level"]
-
-[node name="Hornet" parent="Level/hornets" instance=ExtResource("4_ljewf")]
 
 [node name="BossTriggerArea" type="Area2D" parent="Level"]
 position = Vector2(0, 5)

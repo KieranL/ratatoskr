@@ -153,13 +153,14 @@ func hit(damage, source: Node):
 			died.emit()
 		else:
 			_is_damage_state = true
-			if (source is Enemy):
-				var enemy = source
 				
-				# push the player back
+			if (source is Hornet):
+				velocity = source.velocity * 2
+			else:
+			# push the player back
 				velocity = -velocity
-				if (abs(velocity.x) > abs(velocity.y)):
-					velocity.x *= 1.5 
+			if (abs(velocity.x) > abs(velocity.y)):
+				velocity.x *= 1.5 
 		
 			await trigger_invincible(IFRAME_DURATION_IN_MS)
 		
