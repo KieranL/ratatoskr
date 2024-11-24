@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://cqff4a7uroo66" path="res://Assets/SoundEffects/Nut Spit.wav" id="4_e7caj"]
 [ext_resource type="AudioStream" uid="uid://sjod173axgwf" path="res://Assets/SoundEffects/jump.wav" id="5"]
 [ext_resource type="Script" path="res://scenes/maingame/player/melee_attack.gd" id="5_sjml7"]
+[ext_resource type="AudioStream" uid="uid://cs4qr0kt46nob" path="res://Assets/SoundEffects/AxeSwing.wav" id="6_40hwf"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
-[ext_resource type="AudioStream" uid="uid://b276fh0va78ks" path="res://Assets/SoundEffects/Scratch Attack.wav" id="6_hjkub"]
 [ext_resource type="AudioStream" uid="uid://c1bg5c8v4liuv" path="res://Assets/SoundEffects/Jetpack.wav" id="7_hettp"]
 [ext_resource type="Script" path="res://scenes/maingame/player/camera.gd" id="7_lps7a"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
@@ -48,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/1/path = NodePath("Jetpack")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -181,7 +181,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/1/path = NodePath("Jetpack")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -192,7 +192,7 @@ tracks/1/use_blend = true
 tracks/2/type = "audio"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("AnimationPlayer/AudioStreamPlayer2D")
+tracks/2/path = NodePath("Jetpack")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -255,7 +255,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/Walking")
+tracks/1/path = NodePath("Walking")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -375,19 +375,13 @@ one_shot = true
 
 [node name="Slash" type="AudioStreamPlayer2D" parent="Sprite2D/Melee"]
 position = Vector2(-30.6589, -6.13176)
-stream = ExtResource("6_hjkub")
+stream = ExtResource("6_40hwf")
 volume_db = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jnr5f")
 }
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
-volume_db = -5.0
-
-[node name="Walking" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
-scale = Vector2(0.8, 0.8)
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -28)
@@ -463,5 +457,12 @@ label_settings = SubResource("LabelSettings_8v8mq")
 
 [node name="Ouch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_0anyv")
+
+[node name="Jetpack" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1.25, 1.25)
+volume_db = -5.0
+
+[node name="Walking" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1.25, 1.25)
 
 [connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
