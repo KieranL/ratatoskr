@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctgumjaytuoch"]
+[gd_scene load_steps=25 format=3 uid="uid://ctgumjaytuoch"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://6mtip3ruyn" path="res://scenes/maingame/enemy/enemy.tscn" id="2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://upfcr5xg5fvh" path="res://Assets/Art/grass_3.webp" id="13"]
 [ext_resource type="Texture2D" uid="uid://icddaryasunc" path="res://Assets/Art/tree_1.webp" id="14"]
 [ext_resource type="Texture2D" uid="uid://dea1a76o6b0ix" path="res://Assets/Art/tree_2.webp" id="15"]
+[ext_resource type="PackedScene" uid="uid://dafavqaic6lhx" path="res://scenes/maingame/enemies/hornet/entity.tscn" id="15_cjxsr"]
 [ext_resource type="Texture2D" uid="uid://cqydct6vajobg" path="res://Assets/Art/bush_1.webp" id="16"]
 [ext_resource type="Texture2D" uid="uid://co8bwstg3ea6x" path="res://Assets/Art/rock_1.webp" id="17"]
 [ext_resource type="Material" uid="uid://djwm5nol3d801" path="res://Assets/Art/wind_sway.tres" id="18"]
@@ -1353,6 +1354,9 @@ position = Vector2(1362, -735)
 position = Vector2(-465, -756)
 HEALTH = 1000
 CONTACT_DAMAGE = 35
+
+[node name="Hornet" parent="Enemies" instance=ExtResource("15_cjxsr")]
+position = Vector2(772, 561)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("7")]
 
