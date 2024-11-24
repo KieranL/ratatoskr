@@ -8,6 +8,7 @@ signal bossZoneLeavePlayer()
 
 const WALK_SPEED = 300.0
 const ACCELERATION_SPEED = WALK_SPEED * 6.0
+const RUN_MODIFIER = 1.5
 const JUMP_VELOCITY = -725.0
 ## Maximum speed at which the player can fall.
 const TERMINAL_VELOCITY = 700
@@ -66,14 +67,19 @@ func _physics_process(delta: float) -> void:
 		velocity.y *= 0.6
 	
 	# Fall if not flying	
-	if !_isFlying:
+	if !_isFlying || !Input.is_action_pressed("jump"):
 		velocity.y = minf(TERMINAL_VELOCITY, velocity.y + gravity * delta)
+		_isFlying = false
 	else:
 		var yDirection := Input.get_axis("move_up" + action_suffix, "move_down" + action_suffix) * WALK_SPEED
-		velocity.y = move_toward(velocity.y, yDirection, ACCELERATION_SPEED * delta)	
+		velocity.y = move_toward(velocity.y, yDirection, ACCELERATION_SPEED * delta)
 
 	var xDirection := Input.get_axis("move_left" + action_suffix, "move_right" + action_suffix)
 	xDirection *= WALK_SPEED
+	
+	if Input.is_action_pressed("run") && is_on_floor():
+		xDirection *= RUN_MODIFIER
+	
 	velocity.x = move_toward(velocity.x, xDirection, ACCELERATION_SPEED * delta)			
 
 	if not is_zero_approx(velocity.x) and not _is_damage_state:
@@ -134,6 +140,7 @@ func try_jump() -> void:
 		_isFlying = false
 	else:
 		_isFlying = true
+		velocity.y = JUMP_VELOCITY
 	
 func hit(damage, source: Node):
 	if _is_damage_state == false:
