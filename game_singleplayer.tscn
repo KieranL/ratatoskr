@@ -29,7 +29,7 @@ position = Vector2(0, 5)
 script = ExtResource("7_oj8dg")
 
 [node name="Collision2D" type="CollisionShape2D" parent="Level/BossTriggerArea"]
-position = Vector2(486, -919)
+position = Vector2(533, -928)
 shape = SubResource("RectangleShape2D_ls2sj")
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
