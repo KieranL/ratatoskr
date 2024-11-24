@@ -9,18 +9,14 @@ Check out the demo this was based from in the asset library: https://godotengine
 
 ## Features
 
-- Side-scrolling player controller using [`CharacterBody2D`](https://docs.godotengine.org/en/latest/classes/class_characterbody2d.html).
-	- Can walk on and snap to slopes.
-	- Can shoot, including while jumping.
-- Enemies that crawl on the floor and change direction when they encounter an obstacle.
-- Camera that stays within the level’s bounds.
-- Supports keyboard and gamepad controls.
-- Platforms that can move in any direction.
-- Gun that shoots bullets with rigid body (natural) physics.
-- Collectible coins.
-- Pause and pause menu.
-- Pixel art visuals.
-- Sound effects and music.
+- Squirrel with Jetpack
+- Squirrel with Axes
+- Squirrel with Acorns
+- Squirrel with Jump
+- Squirrel with Dash
+- Non-Squirrels ready to be squashed
+- Pixel art visuals
+- Sound effects and music
 
 ## Screenshots
 
@@ -28,4 +24,4 @@ Check out the demo this was based from in the asset library: https://godotengine
 
 ## Music
 
-[*Pompy*](https://soundcloud.com/madbr/pompy) by Hubert Lamontagne (madbr)
+[*Viking Rat Oscar*](Assets/Music) by Ratatoskr devs

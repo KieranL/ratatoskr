@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scenes/maingame/gui/win_menu.gd" id="1_ees0v"]
 
-
 [node name="WinMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -16,7 +15,7 @@ script = ExtResource("1_ees0v")
 layout_mode = 0
 offset_right = 799.0
 offset_bottom = 479.0
-color = Color(0.117647, 0.117647, 0.117647, 0)
+color = Color(0.408329, 0.408329, 0.408329, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
 layout_mode = 1
