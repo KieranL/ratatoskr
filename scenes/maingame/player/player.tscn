@@ -393,8 +393,6 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
 limit_left = -725
-limit_top = -1250
-limit_right = 1425
 limit_bottom = 690
 script = ExtResource("7_lps7a")
 
