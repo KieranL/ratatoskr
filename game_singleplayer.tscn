@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf3wnwihk7ymg"]
+[gd_scene load_steps=9 format=3 uid="uid://bf3wnwihk7ymg"]
 
 [ext_resource type="Script" path="res://game.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dsevj1qewd45y" path="res://scenes/maingame/enemies/hornet/hornet.tscn" id="4_ljewf"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
 [ext_resource type="PackedScene" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
+[ext_resource type="Script" path="res://scenes/maingame/level/bossZoneTrigger.gd" id="7_oj8dg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ls2sj"]
+size = Vector2(45, 468)
 
 [node name="Game" type="Node"]
 process_mode = 3
@@ -20,6 +24,14 @@ position = Vector2(-92, 610)
 
 [node name="Hornet" parent="Level/hornets" instance=ExtResource("4_ljewf")]
 
+[node name="BossTriggerArea" type="Area2D" parent="Level"]
+position = Vector2(0, 5)
+script = ExtResource("7_oj8dg")
+
+[node name="Collision2D" type="CollisionShape2D" parent="Level/BossTriggerArea"]
+position = Vector2(486, -919)
+shape = SubResource("RectangleShape2D_ls2sj")
+
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
 
@@ -30,4 +42,6 @@ visible = false
 
 [connection signal="coin_collected" from="Level/Player" to="InterfaceLayer/PauseMenu" method="_on_coin_collected"]
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
+[connection signal="body_entered" from="Level/BossTriggerArea" to="Level/BossTriggerArea" method="_on_body_entered"]
+[connection signal="bossZoneTrigger" from="Level/BossTriggerArea" to="Level/Player" method="_on_boss_zone_trigger"]
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
