@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://da0idwjho3rll"]
+[gd_scene load_steps=12 format=3 uid="uid://cg1cnkcs84nfo"]
 
 [ext_resource type="Script" path="res://scenes/maingame/player/axe.gd" id="1_uvetl"]
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_372lc"]
