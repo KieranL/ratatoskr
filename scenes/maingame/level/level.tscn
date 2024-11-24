@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ctgumjaytuoch"]
+[gd_scene load_steps=34 format=3 uid="uid://ctgumjaytuoch"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/level/level.gd" id="1_4uv34"]
@@ -24,10 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="21"]
 [ext_resource type="Texture2D" uid="uid://bu54lwrkcng25" path="res://Assets/Art/vine_2.webp" id="22"]
 [ext_resource type="Script" path="res://scenes/maingame/level/boss_gate.gd" id="24_18lxn"]
-[ext_resource type="PackedScene" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
-[ext_resource type="AudioStream" uid="uid://discn7bbcype8" path="res://Assets/Music/Boss Theme.ogg" id="26_e8gg0"]
-[ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="27_s2h18"]
 [ext_resource type="PackedScene" uid="uid://h05abmq7xxv7" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
+[ext_resource type="AudioStream" uid="uid://discn7bbcype8" path="res://Assets/Music/Boss Theme.ogg" id="26_e8gg0"]
+[ext_resource type="Texture2D" uid="uid://d0wfh08ouh3mv" path="res://Assets/Art/gate.webp" id="26_vr8p6"]
+[ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="27_s2h18"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "move"
@@ -1775,12 +1775,10 @@ script = ExtResource("24_18lxn")
 [node name="BossGateShape" type="CollisionShape2D" parent="Gate/BossGate"]
 shape = SubResource("RectangleShape2D_rf3bp")
 
-[node name="BossGateRect" type="ColorRect" parent="Gate/BossGate"]
-offset_left = -10.0
-offset_top = -724.0
-offset_bottom = -267.0
-color = Color(0.133196, 0.133196, 0.133196, 1)
-metadata/_edit_use_anchors_ = true
+[node name="BossGateRect" type="Sprite2D" parent="Gate/BossGate"]
+z_index = 2
+position = Vector2(-25, -477)
+texture = ExtResource("26_vr8p6")
 
 [node name="BossTheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_e8gg0")
