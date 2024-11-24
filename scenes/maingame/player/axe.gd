@@ -26,3 +26,6 @@ func _on_body_entered(body: Node) -> void:
 	if body is Enemy:
 		(body as Enemy).take_damage(100)
 		attacked = true
+	elif body is Boss:
+		(body as Boss).take_damage(100)
+		attacked = true
