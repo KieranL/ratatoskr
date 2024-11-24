@@ -34,6 +34,8 @@ var _hit_player := false
 const FRAME_FLICKER_AMOUNT = 4
 const FRAME_FLICKER_TIME = 400
 
+var _is_hit := false
+
 
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
@@ -92,12 +94,16 @@ func destroy() -> void:
 	
 
 func take_damage(damage) -> void:
-	CURRENT_HEALTH -= damage
+	if _is_hit == false:
+		_is_hit = true
+		CURRENT_HEALTH -= damage
+			
+		await trigger_invincible(FRAME_FLICKER_TIME)
 		
-	trigger_invincible(FRAME_FLICKER_TIME)
-	
-	if CURRENT_HEALTH <= 0:
-		destroy()
+		if CURRENT_HEALTH <= 0:
+			destroy()
+			
+		_is_hit = false
 
 func hunt(huntTarget: Node2D) -> void:
 	_state = State.HUNTING
