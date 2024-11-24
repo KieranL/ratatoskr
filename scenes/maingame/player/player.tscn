@@ -359,3 +359,17 @@ offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_8v8mq")
 
 [connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
+[node name="AcornLabel" type="Label" parent="UI"]
+offset_top = 22.0
+offset_right = 64.0
+offset_bottom = 45.0
+text = "Acorns:"
+label_settings = SubResource("LabelSettings_amg2l")
+
+[node name="AcornAmount" type="Label" parent="UI/AcornLabel"]
+layout_mode = 0
+offset_left = 63.0
+offset_right = 103.0
+offset_bottom = 23.0
+text = "0"
+label_settings = SubResource("LabelSettings_8v8mq")
