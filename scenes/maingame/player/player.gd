@@ -42,8 +42,8 @@ const FRAME_FLICKER_AMOUNT = 4
 @export var MAX_HEALTH := 100;
 @export var CURRENT_HEALTH : int:
 		set(value):
-			CURRENT_HEALTH = value
-			health_ui_amount.text = str(value)
+			CURRENT_HEALTH = max(value, 0)
+			health_ui_amount.text = str(CURRENT_HEALTH)
 			
 @export var IFRAME_DURATION_IN_MS := 400.0
 
@@ -51,6 +51,8 @@ const FRAME_FLICKER_AMOUNT = 4
 		set(value):
 			ACORNS = value
 			acorns_ui_amount.text = str(value)
+
+var alive = true
 			
 func _ready() -> void:
 	CURRENT_HEALTH = MAX_HEALTH
@@ -146,7 +148,8 @@ func hit(damage, source: Node):
 	if _is_damage_state == false:
 		ouch_sound.play()
 		CURRENT_HEALTH -= damage
-		if (CURRENT_HEALTH <= 0):
+		if (CURRENT_HEALTH <= 0 and alive):
+			alive = false
 			died.emit()
 		else:
 			_is_damage_state = true
