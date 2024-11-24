@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
 [ext_resource type="PackedScene" uid="uid://dl74ruxxetvgv" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
-[ext_resource type="PackedScene" uid="uid://dg5xlitu3bj4u" path="res://scenes/maingame/WinMenu.tscn" id="7_l0kld"]
+[ext_resource type="PackedScene" uid="uid://dbynx5ixhjwfg" path="res://scenes/maingame/gui/WinMenu.tscn" id="7_l0kld"]
 [ext_resource type="Script" path="res://scenes/maingame/level/bossZoneTrigger.gd" id="7_oj8dg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ls2sj"]
@@ -38,8 +38,10 @@ visible = false
 
 [node name="WinMenu" parent="InterfaceLayer" instance=ExtResource("7_l0kld")]
 
+[connection signal="winGameTrigger" from="Level" to="InterfaceLayer/WinMenu" method="_on_level_win_game_trigger"]
 [connection signal="coin_collected" from="Level/Player" to="InterfaceLayer/PauseMenu" method="_on_coin_collected"]
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/BossTriggerArea" to="Level/BossTriggerArea" method="_on_body_entered"]
 [connection signal="bossZoneTrigger" from="Level/BossTriggerArea" to="Level/Player" method="_on_boss_zone_trigger"]
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
+[connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="_on_win_menu_game_restart"]

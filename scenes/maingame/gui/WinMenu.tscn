@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbynx5ixhjwfg"]
 
-[ext_resource type="Script" path="res://scenes/maingame/win_menu.gd" id="1_ees0v"]
+[ext_resource type="Script" path="res://scenes/maingame/gui/win_menu.gd" id="1_ees0v"]
+
 
 [node name="WinMenu" type="Control"]
 layout_mode = 3

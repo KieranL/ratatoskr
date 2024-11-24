@@ -32,3 +32,6 @@ func _on_body_entered(body: Node) -> void:
 	elif body is HornetNest:
 		(body as HornetNest).take_damage(100)
 		attacked = true
+	elif body is Boss:
+		(body as Boss).take_damage(100)
+		attacked = true
