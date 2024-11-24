@@ -47,7 +47,7 @@ unique_name_in_owner = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(2, 2)
+size = Vector2i(399, 480)
 render_target_update_mode = 4
 
 [node name="Level" parent="Black/SplitContainer/ViewportContainer1/Viewport1" instance=ExtResource("3_e0nyr")]
@@ -75,7 +75,7 @@ unique_name_in_owner = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(2, 2)
+size = Vector2i(399, 480)
 render_target_update_mode = 4
 
 [node name="ParallaxBackground" parent="Black/SplitContainer/ViewportContainer2/Viewport2" instance=ExtResource("5_47vt4")]
