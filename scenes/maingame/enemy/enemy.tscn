@@ -239,8 +239,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="5"]
-radius = 18.0
-height = 50.0
+radius = 36.0
+height = 88.0
 
 [sub_resource type="CanvasItemMaterial" id="6"]
 blend_mode = 1
@@ -283,6 +283,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -12)
 rotation = -1.5708
 shape = SubResource("5")
 
