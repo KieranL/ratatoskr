@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
-[ext_resource type="PackedScene" uid="uid://dl74ruxxetvgv" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
-[ext_resource type="PackedScene" uid="uid://dbynx5ixhjwfg" path="res://scenes/maingame/gui/WinMenu.tscn" id="7_l0kld"]
+[ext_resource type="PackedScene" uid="uid://d17sdkea6x42w" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
+[ext_resource type="PackedScene" uid="uid://qsslx0xe7sf1" path="res://scenes/maingame/gui/acorn_screen_transition.tscn" id="7_hja7s"]
 [ext_resource type="Script" path="res://scenes/maingame/level/bossZoneTrigger.gd" id="7_oj8dg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ls2sj"]
@@ -16,6 +16,7 @@ process_mode = 3
 script = ExtResource("2")
 
 [node name="Level" parent="." instance=ExtResource("3")]
+script = null
 
 [node name="Player" parent="Level" instance=ExtResource("4")]
 position = Vector2(-92, 610)
@@ -36,12 +37,11 @@ layer = 100
 [node name="GameOverMenu" parent="InterfaceLayer" instance=ExtResource("5_k6cy6")]
 visible = false
 
-[node name="WinMenu" parent="InterfaceLayer" instance=ExtResource("7_l0kld")]
+[node name="AcornScreenTransition" parent="InterfaceLayer" instance=ExtResource("7_hja7s")]
 
-[connection signal="winGameTrigger" from="Level" to="InterfaceLayer/WinMenu" method="_on_level_win_game_trigger"]
 [connection signal="coin_collected" from="Level/Player" to="InterfaceLayer/PauseMenu" method="_on_coin_collected"]
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/BossTriggerArea" to="Level/BossTriggerArea" method="_on_body_entered"]
 [connection signal="bossZoneTrigger" from="Level/BossTriggerArea" to="Level/Player" method="_on_boss_zone_trigger"]
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
-[connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="_on_win_menu_game_restart"]
+[connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="_on_acorn_screen_transition_finish"]
