@@ -19,6 +19,6 @@ func dropGate() -> void:
 	_isGateDropped = true
 	
 	var tween = create_tween()
-	tween.tween_property(gateRect, "position", Vector2(0,-224), .5)
-	tween.tween_property(gateRect, "position", Vector2(0,-264), .1)
-	tween.tween_property(gateRect, "position", Vector2(0,-224), .2)
+	tween.tween_property(gateRect, "position", Vector2(-12,-5), .5)
+	tween.tween_property(gateRect, "position", Vector2(-12,-50), .1)
+	tween.tween_property(gateRect, "position", Vector2(-12,-5), .2)

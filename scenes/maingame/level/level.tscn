@@ -1779,12 +1779,10 @@ script = ExtResource("24_18lxn")
 [node name="BossGateShape" type="CollisionShape2D" parent="Gate/BossGate"]
 shape = SubResource("RectangleShape2D_rf3bp")
 
-[node name="BossGateRect" type="ColorRect" parent="Gate/BossGate"]
-offset_left = -10.0
-offset_top = -724.0
-offset_bottom = -267.0
-color = Color(0.133196, 0.133196, 0.133196, 1)
-metadata/_edit_use_anchors_ = true
+[node name="BossGateRect" type="Sprite2D" parent="Gate/BossGate"]
+z_index = 2
+position = Vector2(-25, -477)
+texture = ExtResource("26_vr8p6")
 
 [node name="Player" parent="." instance=ExtResource("28_d62or")]
 position = Vector2(-97, 614)
