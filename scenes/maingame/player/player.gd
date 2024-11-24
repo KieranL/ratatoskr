@@ -31,6 +31,8 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var camera := $Camera as Camera2D
 
 var _isFlying := false
+var _isMelee := false
+
 
 @onready var health_ui_amount = $UI/HealthLabel/HealthAmount
 @onready var acorns_ui_amount = $UI/AcornLabel/AcornAmount
@@ -94,13 +96,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var is_shooting := false
+	
 	if Input.is_action_just_pressed("spit" + action_suffix) and ACORNS > 0:
 		is_shooting = spit.shoot(sprite.scale.x)
 		ACORNS -= 1
 
 	var is_attacking := false
+	_isMelee = false
 	if Input.is_action_just_pressed("melee" + action_suffix):
 		is_shooting = melee.attack(sprite.scale.x)
+		_isMelee = true
 
 	var animation := get_new_animation(is_shooting)
 	if animation != animation_player.current_animation and shoot_timer.is_stopped():
@@ -126,6 +131,9 @@ func get_new_animation(is_shooting := false) -> String:
 		
 	if _isFlying:
 		animation_new = "climb"	
+		
+	if _isMelee:
+		animation_new = "melee"
 		
 	if _is_damage_state:
 		animation_new = "damaged"
