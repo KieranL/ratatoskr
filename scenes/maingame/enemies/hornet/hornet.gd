@@ -6,6 +6,7 @@ signal died()
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var collision_shape := $CollisionShape2D
+@onready var damaged_sound := $Damaged as AudioStreamPlayer2D
 
 @export var ROAM_COOLDOWN_IN_MS := 3000
 
@@ -103,7 +104,7 @@ func take_damage(damage) -> void:
 	if _is_hit == false:
 		_is_hit = true
 		CURRENT_HEALTH -= damage
-			
+		damaged_sound.play()
 		await trigger_invincible(FRAME_FLICKER_TIME)
 		
 		if CURRENT_HEALTH <= 0:
