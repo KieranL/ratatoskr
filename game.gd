@@ -3,8 +3,13 @@ extends Node
 
 @onready var _pause_menu := $InterfaceLayer/PauseMenu as PauseMenu
 @onready var _game_over_menu := $InterfaceLayer/GameOverMenu as GameOverMenu
+@onready var _acorn_transition := $InterfaceLayer/AcornScreenTransition as AcornScreenTransition
 
 var is_game_over := false
+var is_acorn_transition := false
+
+func _ready() -> void:
+	start_acorn_transition()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"toggle_fullscreen"):
@@ -47,3 +52,19 @@ func reload_game() -> void:
 	tree.paused = false	
 	is_game_over = false
 	get_tree().reload_current_scene()
+
+func start_acorn_transition() -> void:
+	if is_acorn_transition == false:
+		is_acorn_transition = true
+		var tree := get_tree()
+		tree.paused = true
+		_acorn_transition.trigger()
+		
+
+func _on_acorn_screen_transition_finish() -> void:
+	is_acorn_transition = false
+	var tree := get_tree()
+	tree.paused = false
+		
+		
+		
