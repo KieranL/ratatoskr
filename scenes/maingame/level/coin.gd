@@ -8,10 +8,5 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	animation_player.play(&"picked")
-<<<<<<< HEAD
 	(body as Player).acorn_collected()
 	(body as Player).coin_collected.emit()
-=======
-	if (body is Player):
-		(body as Player).coin_collected.emit()
->>>>>>> Add basic hornet ai
