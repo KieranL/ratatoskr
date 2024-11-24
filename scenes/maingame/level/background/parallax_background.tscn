@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://eeitd2vus25o" path="res://Assets/Art/distant_platforms_1.webp" id="6"]
 [ext_resource type="Texture2D" uid="uid://t8otskslwopy" path="res://Assets/Art/cloud_1.webp" id="7"]
 
-
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_base_scale = Vector2(0.1, 0)
 

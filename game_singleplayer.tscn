@@ -1,8 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bf3wnwihk7ymg"]
 
 [ext_resource type="Script" path="res://game.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="4_x6l06"]
 [ext_resource type="PackedScene" uid="uid://dl74ruxxetvgv" path="res://scenes/maingame/gui/game_over.tscn" id="5_k6cy6"]
 [ext_resource type="PackedScene" path="res://scenes/maingame/gui/acorn_screen_transition.tscn" id="7_hja7s"]
@@ -48,6 +46,8 @@ visible = false
 [connection signal="body_entered" from="Level/BossTriggerArea" to="Level/BossTriggerArea" method="_on_body_entered"]
 [connection signal="bossZoneTrigger" from="Level/BossTriggerArea" to="Level" method="_on_boss_zone_trigger"]
 [connection signal="bossZoneTrigger" from="Level/BossTriggerArea" to="Level/Player" method="_on_boss_zone_trigger"]
+[node name="LevelNode" type="Node" parent="."]
+
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
 [connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="_on_acorn_screen_transition_finish"]
 [connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="_on_win_menu_game_restart"]

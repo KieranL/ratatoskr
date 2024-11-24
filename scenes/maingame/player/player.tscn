@@ -370,8 +370,6 @@ volume_db = -5.0
 position = Vector2(0, -28)
 offset = Vector2(0, 50)
 limit_left = -725
-limit_top = -1250
-limit_right = 1425
 limit_bottom = 690
 script = ExtResource("7_lps7a")
 
