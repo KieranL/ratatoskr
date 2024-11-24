@@ -314,7 +314,7 @@ shape = SubResource("11")
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5")
-volume_db = -3.0
+volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
@@ -358,7 +358,6 @@ offset_right = 99.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_8v8mq")
 
-[connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
 [node name="AcornLabel" type="Label" parent="UI"]
 offset_top = 22.0
 offset_right = 64.0
@@ -373,3 +372,7 @@ offset_right = 103.0
 offset_bottom = 23.0
 text = "0"
 label_settings = SubResource("LabelSettings_8v8mq")
+
+[node name="Ouch" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]

@@ -24,6 +24,7 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var shoot_timer := $ShootAnimation as Timer
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var jump_sound := $Jump as AudioStreamPlayer2D
+@onready var ouch_sound := $Ouch as AudioStreamPlayer2D
 @onready var spit: SpitNut = sprite.get_node(^"SpitNut")
 @onready var melee: MeleeAttack = sprite.get_node(^"Melee")
 @onready var camera := $Camera as Camera2D
@@ -146,6 +147,7 @@ func try_jump() -> void:
 	
 func hit(damage, source: Node):
 	if _is_damage_state == false:
+		ouch_sound.play()
 		CURRENT_HEALTH -= damage
 		if (CURRENT_HEALTH <= 0):
 			died.emit()
@@ -180,4 +182,3 @@ func _on_boss_zone_trigger() -> void:
 func acorn_collected() -> void:
 	ACORNS = ACORNS + 1
 	print(ACORNS)
-
