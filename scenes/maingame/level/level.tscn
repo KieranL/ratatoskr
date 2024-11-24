@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ctgumjaytuoch"]
+[gd_scene load_steps=31 format=3 uid="uid://ctgumjaytuoch"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/level/tileset.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/maingame/level/level.gd" id="1_4uv34"]
@@ -23,8 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://crfy1osk1c1gc" path="res://Assets/Art/ground_flowers_1.webp" id="20"]
 [ext_resource type="Texture2D" uid="uid://bvu4vgnc84r84" path="res://Assets/Art/vine_1.webp" id="21"]
 [ext_resource type="Texture2D" uid="uid://bu54lwrkcng25" path="res://Assets/Art/vine_2.webp" id="22"]
-[ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
 [ext_resource type="Script" path="res://scenes/maingame/level/boss_gate.gd" id="24_18lxn"]
+[ext_resource type="PackedScene" path="res://scenes/maingame/level/heal_berry.tscn" id="24_51uf8"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "move"
@@ -1769,13 +1769,13 @@ position = Vector2(496, -922)
 collision_layer = 9
 script = ExtResource("24_18lxn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/BossGate"]
+[node name="BossGateShape" type="CollisionShape2D" parent="Gate/BossGate"]
 shape = SubResource("RectangleShape2D_rf3bp")
 
-[node name="ColorRect" type="ColorRect" parent="Gate/BossGate"]
+[node name="BossGateRect" type="ColorRect" parent="Gate/BossGate"]
 offset_left = -10.0
-offset_top = -224.0
-offset_bottom = 233.0
+offset_top = -724.0
+offset_bottom = -267.0
 color = Color(0.133196, 0.133196, 0.133196, 1)
 metadata/_edit_use_anchors_ = true
 
