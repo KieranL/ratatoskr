@@ -1771,13 +1771,13 @@ position = Vector2(496, -922)
 collision_layer = 9
 script = ExtResource("24_18lxn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/BossGate"]
+[node name="BossGateShape" type="CollisionShape2D" parent="Gate/BossGate"]
 shape = SubResource("RectangleShape2D_rf3bp")
 
-[node name="ColorRect" type="ColorRect" parent="Gate/BossGate"]
+[node name="BossGateRect" type="ColorRect" parent="Gate/BossGate"]
 offset_left = -10.0
-offset_top = -224.0
-offset_bottom = 233.0
+offset_top = -724.0
+offset_bottom = -267.0
 color = Color(0.133196, 0.133196, 0.133196, 1)
 metadata/_edit_use_anchors_ = true
 
