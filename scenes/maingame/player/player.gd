@@ -28,7 +28,7 @@ const CLIMB_HORIZONTAL_SPEED = 160
 @onready var ouch_sound := $Ouch as AudioStreamPlayer2D
 @onready var spit: SpitNut = sprite.get_node(^"SpitNut")
 @onready var melee: MeleeAttack = sprite.get_node(^"Melee")
-@onready var camera := $Camera as PlayerCamera
+#@onready var camera := $Camera as PlayerCamera
 
 var _isFlying := false
 var _isMelee := false
@@ -202,5 +202,6 @@ func healberry_collected(heal_amount) -> void:
 	CURRENT_HEALTH = new_health_actual + overheal
 
 func _on_mini_boss_trigger_area_body_entered(body: Node2D) -> void:
-	const MINI_BOSS_CAMERA_LOWER_LIMIT = -2564
-	camera.setCameraLimits(MINI_BOSS_CAMERA_LOWER_LIMIT)
+#	const MINI_BOSS_CAMERA_LOWER_LIMIT = -2564
+#	camera.setCameraLimits(MINI_BOSS_CAMERA_LOWER_LIMIT)
+	pass

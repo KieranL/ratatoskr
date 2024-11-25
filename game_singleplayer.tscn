@@ -18,14 +18,12 @@ layer = 100
 [node name="GameOverMenu" parent="InterfaceLayer" instance=ExtResource("5_k6cy6")]
 
 [node name="AcornScreenTransition" parent="InterfaceLayer" instance=ExtResource("7_hja7s")]
-visible = false
 
 [node name="WinMenu" parent="InterfaceLayer" instance=ExtResource("8_aamoj")]
-visible = false
 
-[node name="LevelNode" type="Node" parent="."]
+[node name="LevelNode" type="Node2D" parent="."]
 process_mode = 1
 
 [connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
-[connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="_on_acorn_screen_transition_finish"]
+[connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="on_acorn_screen_transition_finish"]
 [connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="_on_win_menu_game_restart"]
