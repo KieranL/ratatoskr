@@ -3542,6 +3542,7 @@ modulate = Color(0.763255, 0.145336, 0.191544, 1)
 self_modulate = Color(0.416265, 0, 0.214752, 1)
 position = Vector2(2275, -2631)
 scale = Vector2(2.5, 2.5)
+safe_margin = 10.423
 HEALTH = 2000
 
 [node name="Regular" type="Node" parent="Actors/Enemies"]
@@ -3605,6 +3606,7 @@ autoplay = true
 stream = ExtResource("5_vetwv")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
+visible = false
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
