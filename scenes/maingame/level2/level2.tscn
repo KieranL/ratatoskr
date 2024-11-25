@@ -3606,7 +3606,6 @@ autoplay = true
 stream = ExtResource("5_vetwv")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-visible = false
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]

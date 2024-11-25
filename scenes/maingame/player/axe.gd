@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	if direction > 0.0:
 		sprite.scale.x = 1.0
 	else:
-		sprite.scale.x = -1.0
+		sprite.flip_h = true
 	
 	#if (rotation > PI / 2):
 		#rotate_dir = -1.0
