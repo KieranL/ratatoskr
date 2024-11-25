@@ -1,8 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://bfhh6r6rtpxhv"]
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1"]
-[ext_resource type="Script" path="res://scenes/maingame/player/nut_projectile.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/maingame/entities/player/nut_projectile.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://bb65yk661f6sk" path="res://Assets/SoundEffects/AcornHit.wav" id="3_3u5ik"]
+
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 

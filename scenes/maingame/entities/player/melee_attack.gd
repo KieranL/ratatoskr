@@ -1,7 +1,7 @@
 class_name MeleeAttack
 extends Marker2D
 
-const AXE_SCENE = preload("res://scenes/maingame/player/axe.tscn")
+const AXE_SCENE = preload("res://scenes/maingame/entities/player/axe.tscn")
 
 @onready var sound_slash := $Slash as AudioStreamPlayer2D
 @onready var timer := $Cooldown as Timer

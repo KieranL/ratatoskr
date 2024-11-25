@@ -4,8 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://duwm7i44o75o2" path="res://Assets/SoundEffects/explode.wav" id="2"]
 [ext_resource type="AudioStream" uid="uid://dm7wsawmylc7b" path="res://Assets/SoundEffects/hit.wav" id="3"]
 [ext_resource type="Texture2D" uid="uid://bjjywmvba0sve" path="res://Assets/Art/enemy.webp" id="4"]
-[ext_resource type="Script" path="res://scenes/maingame/enemy/enemy.gd" id="5"]
+[ext_resource type="Script" path="res://scenes/maingame/entities/enemies/snake/snake.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://du68yhi2roh5k" path="res://Assets/SoundEffects/SnakeHit.wav" id="5_yhxkn"]
+
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 

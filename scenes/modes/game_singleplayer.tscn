@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf3wnwihk7ymg"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_on1qy"]
+[ext_resource type="PackedScene" uid="uid://c7ai4bigaryci" path="res://scenes/maingame/gui/pause_menu_singleplayer.tscn" id="2_boq27"]
+[ext_resource type="PackedScene" uid="uid://dl74ruxxetvgv" path="res://scenes/maingame/gui/game_over.tscn" id="3_ivnht"]
+[ext_resource type="PackedScene" uid="uid://qsslx0xe7sf1" path="res://scenes/maingame/gui/acorn_screen_transition.tscn" id="4_nhj1v"]
+[ext_resource type="PackedScene" uid="uid://dbynx5ixhjwfg" path="res://scenes/maingame/gui/WinMenu.tscn" id="5_7ytde"]
+
+[node name="Game" type="Node"]
+process_mode = 3
+script = ExtResource("1_on1qy")
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource("2_boq27")]
+visible = false
+
+[node name="GameOverMenu" parent="InterfaceLayer" instance=ExtResource("3_ivnht")]
+visible = false
+
+[node name="AcornScreenTransition" parent="InterfaceLayer" instance=ExtResource("4_nhj1v")]
+visible = false
+
+[node name="WinMenu" parent="InterfaceLayer" instance=ExtResource("5_7ytde")]
+visible = false
+
+[node name="LevelNode" type="Node2D" parent="."]
+process_mode = 1
+
+[connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="on_game_over_menu_game_restart"]
+[connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="on_acorn_screen_transition_finish"]
+[connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="on_win_menu_game_restart"]

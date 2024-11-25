@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://ba5sup1xck4rb"]
 
-[ext_resource type="Script" path="res://scenes/maingame/level/heal_berry.gd" id="1_j11vg"]
+[ext_resource type="Script" path="res://scenes/maingame/levels/collectables/heal_berry/heal_berry.gd" id="1_j11vg"]
 [ext_resource type="Texture2D" uid="uid://dtg0xba1aqp3w" path="res://Assets/Art/Berry.webp" id="2_syrbu"]
 [ext_resource type="AudioStream" uid="uid://d14lhwr070dsd" path="res://Assets/SoundEffects/CollectAcorn.wav" id="3_fe1l8"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8gef"]
 
