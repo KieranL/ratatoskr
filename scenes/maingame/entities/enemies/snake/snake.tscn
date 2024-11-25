@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/maingame/entities/enemies/snake/snake.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://du68yhi2roh5k" path="res://Assets/SoundEffects/SnakeHit.wav" id="5_yhxkn"]
 
-
 [sub_resource type="CanvasItemMaterial" id="1"]
 
 [sub_resource type="Animation" id="8"]
@@ -314,3 +313,5 @@ stream = ExtResource("2")
 
 [node name="Damaged" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_yhxkn")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

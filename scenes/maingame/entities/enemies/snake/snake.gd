@@ -87,3 +87,8 @@ func trigger_invincible(duration_in_ms) -> void:
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
 		sprite.visible = true
 		await get_tree().create_timer(duration_per_flicker / 1000).timeout
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "destroy":
+		queue_free()
