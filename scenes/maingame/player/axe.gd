@@ -1,7 +1,6 @@
 class_name Axe
 extends RigidBody2D
 
-
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var sprite := $Sprite2D as Sprite2D
 #var rotate_dir := 1.0
@@ -12,13 +11,12 @@ var lastEnemyHit = null
 func _process(delta: float) -> void:
 	var parent := get_parent() as Node
 	var parent_position := parent.global_position as Vector2
-	self.global_position = Vector2(parent_position.x + (direction * 50), parent_position.y+5)
+	self.global_position = Vector2(parent_position.x + (direction * 12), parent_position.y+15)
 
-	if direction > 0.0:
-		sprite.scale.x = 1.0
+	if direction == 1:
+		animation_player.play("swing")
 	else:
-		sprite.flip_h = true
-	
+		animation_player.play("swing_mirror")
 	#if (rotation > PI / 2):
 		#rotate_dir = -1.0
 	#
@@ -26,10 +24,8 @@ func _process(delta: float) -> void:
 	
 
 func destroy() -> void:
-	animation_player.play(&"destroy")
+
 	lastEnemyHit = null
-
-
 
 func _on_body_entered(body: Node) -> void:
 	if lastEnemyHit != body:
@@ -49,3 +45,7 @@ func _on_body_entered(body: Node) -> void:
 			(body as Boss).take_damage(100)
 			
 		attacked = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	queue_free()

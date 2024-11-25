@@ -200,8 +200,3 @@ func healberry_collected(heal_amount) -> void:
 	var overheal = floor((heal_amount - healed_amount) / 2)
 
 	CURRENT_HEALTH = new_health_actual + overheal
-
-func _on_mini_boss_trigger_area_body_entered(body: Node2D) -> void:
-#	const MINI_BOSS_CAMERA_LOWER_LIMIT = -2564
-#	camera.setCameraLimits(MINI_BOSS_CAMERA_LOWER_LIMIT)
-	pass

@@ -11,7 +11,7 @@ func attack(direction: float = 1.0) -> bool:
 	if not timer.is_stopped():
 		return false
 	var nut := AXE_SCENE.instantiate() as Axe
-	nut.global_position = Vector2(global_position.x + (direction * 50), global_position.y)
+	nut.global_position = Vector2(global_position.x + (direction * 5), global_position.y)
 	nut.direction = direction
 
 	nut.set_as_top_level(true)
