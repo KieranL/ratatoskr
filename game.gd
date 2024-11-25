@@ -1,42 +1,76 @@
 class_name Game
 extends Node
 
-@onready var _pause_menu := $InterfaceLayer/PauseMenu as PauseMenu
-@onready var _game_over_menu := $InterfaceLayer/GameOverMenu as GameOverMenu
-@onready var _acorn_transition := $InterfaceLayer/AcornScreenTransition as AcornScreenTransition
-@onready var _win_menu := $InterfaceLayer/WinMenu as WinMenu
-@onready var _level_node := $LevelNode
+@onready var pause_menu: PauseMenu = $InterfaceLayer/PauseMenu
+@onready var game_over_menu: GameOverMenu = $InterfaceLayer/GameOverMenu
+@onready var acorn_transition: AcornScreenTransition = $InterfaceLayer/AcornScreenTransition
+@onready var win_menu: WinMenu = $InterfaceLayer/WinMenu
+@onready var level_node: Node2D = $LevelNode
 
-var is_game_over := false
-var is_acorn_transition := false
+var is_game_over: bool = false
+var is_acorn_transition: bool = false
 
-enum LEVEL {
-	LEVEL_1,
-	LEVEL_2
-}
+enum LEVEL { LEVEL_1, LEVEL_2 }
+@export var current_level: LEVEL = LEVEL.LEVEL_1
 
-@export var CURRENT_LEVEL := LEVEL.LEVEL_2 :
-	set (value):
-		var tree = get_tree()
-		tree.paused = true
-		for child in _level_node.get_children():
-			_level_node.remove_child(child)
-		if(value == LEVEL.LEVEL_1):
-			var level:PackedScene = load("res://scenes/maingame/level/level.tscn")
-			var new_level = level.instantiate()
-			new_level.connect("playerDied", _on_player_died)
-			_level_node.add_child(new_level)
-		if(value == LEVEL.LEVEL_2):
-			var level:PackedScene = load("res://scenes/maingame/level2/level2.tscn")
-			var new_level = level.instantiate()
-			new_level.connect("playerDied", _on_player_died)
-			new_level.connect("playerWin", _on_player_win)
-			_level_node.add_child(new_level)
-		start_acorn_transition()
+func _ready():
+	load_level(current_level)
 
-func _ready() -> void:
-	CURRENT_LEVEL = LEVEL.LEVEL_2
+func load_level(level: LEVEL):
+	get_tree().paused = true
+	
+	# Remove any existing level
+	for child in level_node.get_children():
+		level_node.remove_child(child)
+	
+	# Load and add the new level
+	match level:
+		LEVEL.LEVEL_1:
+			var level_scene: PackedScene = preload("res://scenes/maingame/level/level.tscn")
+			var new_level = level_scene.instantiate()
+			new_level.connect("playerDied", on_player_died)
+			new_level.connect("loadComplete", on_level_loaded)
+			level_node.add_child(new_level)
+		LEVEL.LEVEL_2:
+			var level_scene: PackedScene = preload("res://scenes/maingame/level2/level2.tscn")
+			var new_level = level_scene.instantiate()
+			new_level.connect("playerDied", on_player_died)
+			new_level.connect("playerWin", on_player_win)
+			new_level.connect("loadComplete", on_level_loaded)
+			level_node.add_child(new_level)
+	
+func on_player_died():
+	is_game_over = true
+	get_tree().paused = true
+	game_over_menu.triggerMenu()
+
+func on_player_win():
+	get_tree().paused = true
+	win_menu.open()
+
+func on_level_loaded():
 	start_acorn_transition()
+
+func on_game_over_menu_game_restart():
+	reload_game()
+
+func on_win_menu_game_restart():
+	reload_game()
+
+func reload_game():
+	get_tree().paused = false
+	is_game_over = false
+	get_tree().reload_current_scene()
+
+func start_acorn_transition():
+	if !is_acorn_transition:
+		is_acorn_transition = true
+		get_tree().paused = true
+		acorn_transition.trigger()
+
+func on_acorn_screen_transition_finish():
+	is_acorn_transition = false
+	get_tree().paused = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"toggle_fullscreen"):
@@ -53,47 +87,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			var tree := get_tree()
 			tree.paused = not tree.paused
 			if tree.paused:
-				_pause_menu.open()
+				pause_menu.open()
 			else:
-				_pause_menu.close()
+				pause_menu.close()
 			get_tree().root.set_input_as_handled()
 	elif event.is_action_pressed("reload_scene"):
 		reload_game()
-
-
-func _on_player_died() -> void:
-	is_game_over = true
-	var tree := get_tree()
-	tree.paused = true
-	_game_over_menu.triggerMenu()
-
-func _on_player_win() -> void:
-	_win_menu.open()
-
-func _on_game_over_menu_game_restart() -> void:
-	reload_game()
-	
-func _on_win_menu_game_restart() -> void:
-	reload_game()
-
-func reload_game() -> void:
-	var tree := get_tree()
-	tree.paused = false	
-	is_game_over = false
-	get_tree().reload_current_scene()
-
-func start_acorn_transition() -> void:
-	if is_acorn_transition == false:
-		is_acorn_transition = true
-		var tree := get_tree()
-		tree.paused = true
-		_acorn_transition.trigger()
-		
-
-func _on_acorn_screen_transition_finish() -> void:
-	is_acorn_transition = false
-	var tree := get_tree()
-	tree.paused = false
-		
-		
-		

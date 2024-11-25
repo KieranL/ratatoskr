@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://vh7pmputa7r3"]
+[gd_scene load_steps=30 format=3 uid="uid://vh7pmputa7r3"]
 
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="2_r5fyt"]
 [ext_resource type="Script" path="res://scenes/maingame/player/player.gd" id="3"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://cs4qr0kt46nob" path="res://Assets/SoundEffects/AxeSwing.wav" id="6_40hwf"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="6_dyfdk"]
 [ext_resource type="AudioStream" uid="uid://c1bg5c8v4liuv" path="res://Assets/SoundEffects/Jetpack.wav" id="7_hettp"]
-[ext_resource type="Script" path="res://scenes/maingame/player/camera.gd" id="7_lps7a"]
 [ext_resource type="Script" path="res://scenes/maingame/player/spit_nut.gd" id="8"]
 [ext_resource type="AudioStream" uid="uid://ck8s5wwxavhxv" path="res://Assets/SoundEffects/SquirelHit.wav" id="10_0anyv"]
 [ext_resource type="AudioStream" uid="uid://c0xg12w68m48b" path="res://Assets/SoundEffects/PitterPatter.wav" id="12_jek34"]
@@ -383,13 +382,6 @@ libraries = {
 "": SubResource("AnimationLibrary_jnr5f")
 }
 
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(0, -28)
-offset = Vector2(0, 50)
-limit_left = -725
-limit_bottom = 690
-script = ExtResource("7_lps7a")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("11")
@@ -464,5 +456,3 @@ volume_db = -5.0
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(1.25, 1.25)
-
-[connection signal="bossZoneTriggerPlayer" from="." to="Camera" method="_on_player_boss_zone_trigger_player"]
