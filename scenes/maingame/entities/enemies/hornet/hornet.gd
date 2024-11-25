@@ -53,24 +53,24 @@ func _physics_process(delta: float) -> void:
 	if animation != animation_player.current_animation:
 		animation_player.play(animation)
 	
-	if (_state == State.HUNTING):
-		target_location = target.position
-		
-	if (_state == State.ROAMING):
-		if (global_position.x - target_location.x <= 0.0):
-			await pick_new_roam_target()
-		
-	if not _hit_player:
-		var direction = global_position.direction_to(target_location)
-		velocity = direction * 100
-		
-	if not is_zero_approx(velocity.x):
-		if velocity.x > 0.5:
-			sprite.flip_h = false
-		else:
-			sprite.flip_h = true
-
 	if _state != State.DEAD:
+		if (_state == State.HUNTING):
+			target_location = target.position
+			
+		if (_state == State.ROAMING):
+			if (global_position.x - target_location.x <= 0.0):
+				await pick_new_roam_target()
+			
+		if not _hit_player:
+			var direction = global_position.direction_to(target_location)
+			velocity = direction * 100
+			
+		if not is_zero_approx(velocity.x):
+			if velocity.x > 0.5:
+				sprite.flip_h = false
+			else:
+				sprite.flip_h = true
+
 		var collision_occured = move_and_slide()
 		if collision_occured:
 			for i in get_slide_collision_count():
@@ -79,9 +79,6 @@ func _physics_process(delta: float) -> void:
 					var collider = get_slide_collision(i).get_collider()
 					if (collider is Player):
 						await hit_player(collider)
-
-
-	move_and_slide()
 
 func hit_player(collider) -> void:
 	var player = collider #make typing more clear
@@ -95,10 +92,6 @@ func hit_player(collider) -> void:
 func destroy() -> void:
 	_state = State.DEAD
 	velocity = Vector2.ZERO
-	died.emit()
-	get_parent().remove_child(get_parent().get_node("RoamRadius"))
-	queue_free()
-	
 
 func take_damage(damage) -> void:
 	if _is_hit == false:
@@ -154,6 +147,15 @@ func get_new_animation() -> StringName:
 	var animation_new: StringName
 	if _state == State.HUNTING:
 			animation_new = &"Attack"
-	else:
+	elif _state == State.ROAMING or _state == State.WAITING:
 		animation_new = &"Flying"
+	else:
+		animation_new = &"destroy"
 	return animation_new
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "destroy":
+		died.emit()
+		get_parent().remove_child(get_parent().get_node("RoamRadius"))
+		queue_free()
