@@ -4,7 +4,7 @@ extends Marker2D
 ## The Cooldown timer controls the cooldown duration between shots.
 
 const NUT_VELOCITY = 850.0
-const NUT_SCENE = preload("res://scenes/maingame/player/nut_projectile.tscn")
+const NUT_SCENE = preload("res://scenes/maingame/entities/player/nut_projectile.tscn")
 
 @onready var sound_spit := $Shoot as AudioStreamPlayer2D
 @onready var timer := $Cooldown as Timer

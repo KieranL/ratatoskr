@@ -18,7 +18,7 @@ var _current_spawned = 0
 const FRAME_FLICKER_AMOUNT = 4
 const FRAME_FLICKER_TIME = 400
 
-var hornet_scene = preload("res://scenes/maingame/enemies/hornet/entity.tscn")
+var hornet_scene = preload("res://scenes/maingame/entities/enemies/hornet/entity.tscn")
 
 var _is_hit = false
 

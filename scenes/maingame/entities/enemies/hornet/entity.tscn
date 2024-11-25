@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dafavqaic6lhx"]
 
-[ext_resource type="PackedScene" uid="uid://dsevj1qewd45y" path="res://scenes/maingame/enemies/hornet/hornet.tscn" id="1_anrcr"]
-[ext_resource type="PackedScene" uid="uid://02fb20duuaf3" path="res://scenes/maingame/enemies/hornet/home.tscn" id="2_8kkgg"]
+[ext_resource type="PackedScene" uid="uid://dsevj1qewd45y" path="res://scenes/maingame/entities/enemies/hornet/hornet.tscn" id="1_anrcr"]
+[ext_resource type="PackedScene" uid="uid://02fb20duuaf3" path="res://scenes/maingame/entities/enemies/hornet/home.tscn" id="2_8kkgg"]
+
 
 [sub_resource type="GDScript" id="GDScript_movqm"]
 

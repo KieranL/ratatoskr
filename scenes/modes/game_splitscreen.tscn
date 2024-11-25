@@ -1,10 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://2elur2m0il32"]
 
-[ext_resource type="Script" path="res://game_splitscreen.gd" id="1_60qgt"]
+[ext_resource type="Script" path="res://scenes/modes/game_splitscreen.gd" id="1_60qgt"]
 [ext_resource type="PackedScene" uid="uid://dggactv0aho4p" path="res://scenes/maingame/gui/pause_menu_splitscreen.tscn" id="2_xkexm"]
-[ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/level/level.tscn" id="3_e0nyr"]
-[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/player/player.tscn" id="4_8j0va"]
-[ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://scenes/maingame/level/background/parallax_background.tscn" id="5_47vt4"]
+[ext_resource type="PackedScene" uid="uid://ctgumjaytuoch" path="res://scenes/maingame/levels/level1/level.tscn" id="3_e0nyr"]
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://scenes/maingame/entities/player/player.tscn" id="4_8j0va"]
+[ext_resource type="PackedScene" uid="uid://cw6nldo3rjyyq" path="res://scenes/maingame/levels/background/parallax_background.tscn" id="5_47vt4"]
+
 
 [sub_resource type="Gradient" id="Gradient_77njx"]
 

@@ -13,7 +13,7 @@ config_version=5
 config/name="Ratatoskr"
 config/description="The greatest squirrel"
 config/tags=PackedStringArray("squirrel")
-run/main_scene="res://game_singleplayer.tscn"
+run/main_scene="res://scenes/modes/game_singleplayer.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://Assets/Art/bullet.webp"
 
