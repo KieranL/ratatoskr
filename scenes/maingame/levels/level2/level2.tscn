@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=34 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/levels/tileset.tres" id="1_1aeog"]
 [ext_resource type="Script" path="res://scenes/maingame/levels/level2/level_2.gd" id="1_rkwk0"]
@@ -86,6 +86,44 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_ivkcj"),
 "disappear": SubResource("Animation_cvlr5")
+}
+
+[sub_resource type="Animation" id="Animation_xr5o5"]
+resource_name = "platform_movement"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1149, -1862), Vector2(1149, -1278), Vector2(1149, -1278), Vector2(1149, -1862)]
+}
+
+[sub_resource type="Animation" id="Animation_mviyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1149, -1862)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aeog1"]
+_data = {
+"RESET": SubResource("Animation_mviyx"),
+"platform_movement": SubResource("Animation_xr5o5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rniym"]
@@ -391,12 +429,6 @@ texture = ExtResource("13_67yij")
 z_index = -2
 z_as_relative = false
 position = Vector2(2000, -1878)
-texture = ExtResource("13_67yij")
-
-[node name="Sprite2D17" type="Sprite2D" parent="Map/Graphics/Rocks"]
-z_index = -3
-z_as_relative = false
-position = Vector2(1191, -1914)
 texture = ExtResource("13_67yij")
 
 [node name="Sprite2D18" type="Sprite2D" parent="Map/Graphics/Rocks"]
@@ -2990,7 +3022,7 @@ texture = ExtResource("8_gsrq8")
 [node name="Sprite2D17" type="Sprite2D" parent="Map/Graphics/Trees"]
 z_index = -8
 material = ExtResource("6_dpy45")
-position = Vector2(290, -950)
+position = Vector2(271, -948)
 texture = ExtResource("8_gsrq8")
 
 [node name="Sprite2D18" type="Sprite2D" parent="Map/Graphics/Trees"]
@@ -3002,7 +3034,7 @@ texture = ExtResource("8_gsrq8")
 [node name="Sprite2D19" type="Sprite2D" parent="Map/Graphics/Trees"]
 z_index = -4
 material = ExtResource("6_dpy45")
-position = Vector2(870, -2676)
+position = Vector2(814, -2674)
 texture = ExtResource("7_27bgk")
 
 [node name="Sprite2D20" type="Sprite2D" parent="Map/Graphics/Trees"]
@@ -3048,10 +3080,22 @@ position = Vector2(1516, -1651)
 scale = Vector2(2, 1)
 
 [node name="Platform7" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(1159, -1853)
+position = Vector2(1149, -1862)
+
+[node name="Sprite2D17" type="Sprite2D" parent="Map/Platforms/Platform7"]
+z_index = -3
+z_as_relative = false
+position = Vector2(32, -61)
+texture = ExtResource("13_67yij")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Platforms/Platform7"]
+libraries = {
+"": SubResource("AnimationLibrary_aeog1")
+}
+autoplay = "platform_movement"
 
 [node name="Platform8" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(393, -1736)
+position = Vector2(370, -1740)
 rotation = 0.47822
 scale = Vector2(2.5, 1)
 
@@ -3077,16 +3121,16 @@ position = Vector2(1651, -2037)
 position = Vector2(1828, -2560)
 
 [node name="Platform11" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(392, -2641)
+position = Vector2(336, -2639)
 scale = Vector2(2, 1)
 
 [node name="Platform12" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(741, -2603)
+position = Vector2(685, -2601)
 rotation = 0.23911
 scale = Vector2(2, 1)
 
 [node name="Platform13" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(273, -843)
+position = Vector2(254, -841)
 
 [node name="Platform14" parent="Map/Platforms" instance=ExtResource("4_1luut")]
 position = Vector2(628, -1072)
@@ -3305,7 +3349,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc8" type="Node2D" parent="Map/Acorns"]
-position = Vector2(259, -918)
+position = Vector2(240, -916)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc8" instance=ExtResource("6_th6u2")]
 
@@ -3327,7 +3371,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc10" type="Node2D" parent="Map/Acorns"]
-position = Vector2(249, -1893)
+position = Vector2(226, -1897)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc10" instance=ExtResource("6_th6u2")]
 
@@ -3338,7 +3382,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc11" type="Node2D" parent="Map/Acorns"]
-position = Vector2(360, -1841)
+position = Vector2(337, -1845)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc11" instance=ExtResource("6_th6u2")]
 
@@ -3349,7 +3393,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc12" type="Node2D" parent="Map/Acorns"]
-position = Vector2(509, -1748)
+position = Vector2(486, -1752)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc12" instance=ExtResource("6_th6u2")]
 
@@ -3459,7 +3503,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc22" type="Node2D" parent="Map/Acorns"]
-position = Vector2(266, -2753)
+position = Vector2(210, -2751)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc22" instance=ExtResource("6_th6u2")]
 
@@ -3470,7 +3514,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc23" type="Node2D" parent="Map/Acorns"]
-position = Vector2(597, -2705)
+position = Vector2(541, -2703)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc23" instance=ExtResource("6_th6u2")]
 
@@ -3542,6 +3586,7 @@ modulate = Color(0.763255, 0.145336, 0.191544, 1)
 self_modulate = Color(0.416265, 0, 0.214752, 1)
 position = Vector2(2275, -2631)
 scale = Vector2(2.5, 2.5)
+safe_margin = 10.423
 HEALTH = 2000
 
 [node name="Regular" type="Node" parent="Actors/Enemies"]
@@ -3575,7 +3620,7 @@ HEALTH = 200
 
 [node name="Enemy8" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
 modulate = Color(0.766315, 0.000492474, 0.774579, 1)
-position = Vector2(400, -2700)
+position = Vector2(344, -2698)
 HEALTH = 200
 
 [node name="Enemy9" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
