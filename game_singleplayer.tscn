@@ -24,6 +24,6 @@ layer = 100
 [node name="LevelNode" type="Node2D" parent="."]
 process_mode = 1
 
-[connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="_on_game_over_menu_game_restart"]
+[connection signal="game_restart" from="InterfaceLayer/GameOverMenu" to="." method="on_game_over_menu_game_restart"]
 [connection signal="finish_acorn_transition" from="InterfaceLayer/AcornScreenTransition" to="." method="on_acorn_screen_transition_finish"]
-[connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="_on_win_menu_game_restart"]
+[connection signal="game_restart" from="InterfaceLayer/WinMenu" to="." method="on_win_menu_game_restart"]

@@ -31,9 +31,10 @@ func load_level(level: LEVEL):
 	# Load and add the new level
 	match level:
 		LEVEL.LEVEL_1:
-			var level_scene: PackedScene = load("res://scenes/maingame/level/level.tscn")
+			var level_scene: PackedScene = preload("res://scenes/maingame/level/level.tscn")
 			var new_level = level_scene.instantiate()
 			new_level.connect("playerDied", on_player_died)
+			new_level.connect("loadComplete", on_level_loaded)
 			level_node.add_child(new_level)
 		LEVEL.LEVEL_2:
 			var level_scene: PackedScene = preload("res://scenes/maingame/level2/level2.tscn")
@@ -43,12 +44,13 @@ func load_level(level: LEVEL):
 			new_level.connect("loadComplete", on_level_loaded)
 			level_node.add_child(new_level)
 	
-func on_player_died(_level):
+func on_player_died():
 	is_game_over = true
 	get_tree().paused = true
 	game_over_menu.triggerMenu()
 
 func on_player_win():
+	get_tree().paused = true
 	win_menu.open()
 
 func on_level_loaded():
