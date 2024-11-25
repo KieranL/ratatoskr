@@ -3594,7 +3594,7 @@ position = Vector2(1471, -1247)
 position = Vector2(2439, -1884)
 
 [node name="Player" parent="Actors" instance=ExtResource("3_dk8vk")]
-position = Vector2(232, 379)
+position = Vector2(1639, -2595)
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="Actors/Player"]
 position = Vector2(-311.25, -462.5)
@@ -3609,6 +3609,7 @@ stream = ExtResource("5_vetwv")
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
+[connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="." method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="Map/BossGateStaticBody" method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="Actors/Player" method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="spawnerDeath" from="Actors/Enemies/Spwaner" to="." method="_on_spwaner_spawner_death"]
