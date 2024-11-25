@@ -1,27 +1,22 @@
 class_name Game
 extends Node
 
-# Onready references
 @onready var pause_menu: PauseMenu = $InterfaceLayer/PauseMenu
 @onready var game_over_menu: GameOverMenu = $InterfaceLayer/GameOverMenu
 @onready var acorn_transition: AcornScreenTransition = $InterfaceLayer/AcornScreenTransition
 @onready var win_menu: WinMenu = $InterfaceLayer/WinMenu
 @onready var level_node: Node2D = $LevelNode
 
-# State variables
 var is_game_over: bool = false
 var is_acorn_transition: bool = false
 
-# Level management
 enum LEVEL { LEVEL_1, LEVEL_2 }
-@export var current_level: LEVEL = LEVEL.LEVEL_2
+@export var current_level: LEVEL = LEVEL.LEVEL_1
 
 func _ready():
-	# Start with level 2
 	load_level(current_level)
 
 func load_level(level: LEVEL):
-	# Pause the game tree
 	get_tree().paused = true
 	
 	# Remove any existing level
@@ -98,7 +93,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().root.set_input_as_handled()
 	elif event.is_action_pressed("reload_scene"):
 		reload_game()
-
-
-
-		

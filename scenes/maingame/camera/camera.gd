@@ -17,9 +17,3 @@ func set_target(targetNode: Node2D):
 func _process(delta: float) -> void:
 	if _target:
 		position = _target.position
-
-func _on_player_boss_zone_trigger_player() -> void:	
-	limit_bottom = BOSS_ZONE_BOTTOM_LIMIT
-
-func setCameraLimits(limitBottom: int) -> void:
-	limit_bottom = limitBottom
