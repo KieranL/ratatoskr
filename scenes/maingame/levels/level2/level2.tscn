@@ -3002,7 +3002,7 @@ texture = ExtResource("8_gsrq8")
 [node name="Sprite2D19" type="Sprite2D" parent="Map/Graphics/Trees"]
 z_index = -4
 material = ExtResource("6_dpy45")
-position = Vector2(870, -2676)
+position = Vector2(814, -2674)
 texture = ExtResource("7_27bgk")
 
 [node name="Sprite2D20" type="Sprite2D" parent="Map/Graphics/Trees"]
@@ -3051,7 +3051,7 @@ scale = Vector2(2, 1)
 position = Vector2(1159, -1853)
 
 [node name="Platform8" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(393, -1736)
+position = Vector2(370, -1740)
 rotation = 0.47822
 scale = Vector2(2.5, 1)
 
@@ -3077,11 +3077,11 @@ position = Vector2(1651, -2037)
 position = Vector2(1828, -2560)
 
 [node name="Platform11" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(392, -2641)
+position = Vector2(336, -2639)
 scale = Vector2(2, 1)
 
 [node name="Platform12" parent="Map/Platforms" instance=ExtResource("4_1luut")]
-position = Vector2(741, -2603)
+position = Vector2(685, -2601)
 rotation = 0.23911
 scale = Vector2(2, 1)
 
@@ -3327,7 +3327,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc10" type="Node2D" parent="Map/Acorns"]
-position = Vector2(249, -1893)
+position = Vector2(226, -1897)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc10" instance=ExtResource("6_th6u2")]
 
@@ -3338,7 +3338,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc11" type="Node2D" parent="Map/Acorns"]
-position = Vector2(360, -1841)
+position = Vector2(337, -1845)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc11" instance=ExtResource("6_th6u2")]
 
@@ -3349,7 +3349,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc12" type="Node2D" parent="Map/Acorns"]
-position = Vector2(509, -1748)
+position = Vector2(486, -1752)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc12" instance=ExtResource("6_th6u2")]
 
@@ -3459,7 +3459,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc22" type="Node2D" parent="Map/Acorns"]
-position = Vector2(266, -2753)
+position = Vector2(210, -2751)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc22" instance=ExtResource("6_th6u2")]
 
@@ -3470,7 +3470,7 @@ position = Vector2(30, -10)
 position = Vector2(60, 0)
 
 [node name="CoinsArc23" type="Node2D" parent="Map/Acorns"]
-position = Vector2(597, -2705)
+position = Vector2(541, -2703)
 
 [node name="Coin" parent="Map/Acorns/CoinsArc23" instance=ExtResource("6_th6u2")]
 
@@ -3576,7 +3576,7 @@ HEALTH = 200
 
 [node name="Enemy8" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
 modulate = Color(0.766315, 0.000492474, 0.774579, 1)
-position = Vector2(400, -2700)
+position = Vector2(344, -2698)
 HEALTH = 200
 
 [node name="Enemy9" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
@@ -3606,7 +3606,6 @@ autoplay = true
 stream = ExtResource("5_vetwv")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-visible = false
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
