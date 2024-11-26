@@ -17,7 +17,6 @@ extends Control
 var _health_bar_initial_size : int
 
 func connect_to_entity(entity: Node2D):
-	print("connectin hive")
 	if entity is HornetNest:
 		var nest = (entity as HornetNest)
 		NAME = "HIVE"
@@ -33,7 +32,6 @@ func health_bar_changed(value):
 	CURRENT_HEALTH = value
 
 func update_health_bar(value):
-	print("it's doing something")
 	var percentage = CURRENT_HEALTH / MAX_HEALTH
 	if percentage <= 100:
 		health_bar.size.x = _health_bar_initial_size * percentage
