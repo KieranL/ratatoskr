@@ -56,6 +56,7 @@ func take_damage(damage) -> void:
 		_is_hit = false
 		
 func destroy() -> void:
+	dead = true
 	for entity in hornets.get_children():
 		for child in entity.get_children():
 			if child is Hornet:
