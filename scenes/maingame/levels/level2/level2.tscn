@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=35 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/levels/tileset.tres" id="1_1aeog"]
 [ext_resource type="Script" path="res://scenes/maingame/levels/level2/level_2.gd" id="1_rkwk0"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c3dh7xb6ef76q" path="res://scenes/maingame/levels/collectables/acorn/acorn.tscn" id="6_th6u2"]
 [ext_resource type="Texture2D" uid="uid://dea1a76o6b0ix" path="res://Assets/Art/tree_2.webp" id="7_27bgk"]
 [ext_resource type="Texture2D" uid="uid://icddaryasunc" path="res://Assets/Art/tree_1.webp" id="8_gsrq8"]
-[ext_resource type="PackedScene" uid="uid://dgkyv2jpr1cbi" path="res://scenes/maingame/entities/enemies/hornet/spwaner.tscn" id="8_urhbx"]
+[ext_resource type="PackedScene" uid="uid://dgkyv2jpr1cbi" path="res://scenes/maingame/entities/enemies/hornet/spawner.tscn" id="8_urhbx"]
 [ext_resource type="Texture2D" uid="uid://bj6am5nfc0k73" path="res://Assets/Art/grass_1.webp" id="9_fnsri"]
 [ext_resource type="Texture2D" uid="uid://bju7r7jqn8bqy" path="res://Assets/Art/grass_2.webp" id="10_r4mc3"]
 [ext_resource type="Texture2D" uid="uid://upfcr5xg5fvh" path="res://Assets/Art/grass_3.webp" id="11_hvc4s"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="18_6jhg8"]
 [ext_resource type="Texture2D" uid="uid://d0wfh08ouh3mv" path="res://Assets/Art/gate.webp" id="18_ae2ve"]
 [ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/levels/collectables/heal_berry/heal_berry.tscn" id="18_ca7db"]
+[ext_resource type="PackedScene" uid="uid://dafavqaic6lhx" path="res://scenes/maingame/entities/enemies/hornet/entity.tscn" id="23_gxhuh"]
 [ext_resource type="Script" path="res://scenes/maingame/camera/camera.gd" id="25_a68qc"]
 
 [sub_resource type="Animation" id="Animation_ivkcj"]
@@ -3578,6 +3579,7 @@ shape = SubResource("RectangleShape2D_b0q44")
 
 [node name="Spwaner" parent="Actors/Enemies" instance=ExtResource("8_urhbx")]
 position = Vector2(2708, -2640)
+HORNET_VISION_RADIUS = 400
 
 [node name="MiniBoss" type="Node" parent="Actors/Enemies"]
 
@@ -3620,7 +3622,7 @@ HEALTH = 200
 
 [node name="Enemy8" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
 modulate = Color(0.766315, 0.000492474, 0.774579, 1)
-position = Vector2(344, -2698)
+position = Vector2(284, -1854)
 HEALTH = 200
 
 [node name="Enemy9" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
@@ -3634,8 +3636,11 @@ position = Vector2(1775, -476)
 [node name="Enemy11" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
 position = Vector2(1471, -1247)
 
-[node name="Enemy12" parent="Actors/Enemies/Regular" instance=ExtResource("5_xb7g0")]
-position = Vector2(2439, -1884)
+[node name="Entity" parent="Actors/Enemies/Regular" instance=ExtResource("23_gxhuh")]
+position = Vector2(2360, -1972)
+
+[node name="Entity2" parent="Actors/Enemies/Regular" instance=ExtResource("23_gxhuh")]
+position = Vector2(697, -2705)
 
 [node name="Player" parent="Actors" instance=ExtResource("3_dk8vk")]
 position = Vector2(1639, -2595)
@@ -3650,6 +3655,7 @@ autoplay = true
 stream = ExtResource("5_vetwv")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
+visible = false
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
