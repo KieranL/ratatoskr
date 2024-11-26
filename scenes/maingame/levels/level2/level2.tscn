@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cpj2ppxqwmgvk"]
+[gd_scene load_steps=36 format=4 uid="uid://cpj2ppxqwmgvk"]
 
 [ext_resource type="TileSet" uid="uid://08mkofgbxx70" path="res://scenes/maingame/levels/tileset.tres" id="1_1aeog"]
 [ext_resource type="Script" path="res://scenes/maingame/levels/level2/level_2.gd" id="1_rkwk0"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d0wfh08ouh3mv" path="res://Assets/Art/gate.webp" id="18_ae2ve"]
 [ext_resource type="PackedScene" uid="uid://ba5sup1xck4rb" path="res://scenes/maingame/levels/collectables/heal_berry/heal_berry.tscn" id="18_ca7db"]
 [ext_resource type="PackedScene" uid="uid://dafavqaic6lhx" path="res://scenes/maingame/entities/enemies/hornet/entity.tscn" id="23_gxhuh"]
+[ext_resource type="PackedScene" uid="uid://cxo0l70wnpjpv" path="res://scenes/maingame/gui/health_bar.tscn" id="24_mo5ui"]
 [ext_resource type="Script" path="res://scenes/maingame/camera/camera.gd" id="25_a68qc"]
 
 [sub_resource type="Animation" id="Animation_ivkcj"]
@@ -3577,7 +3578,7 @@ shape = SubResource("RectangleShape2D_b0q44")
 
 [node name="Enemies" type="Node" parent="Actors"]
 
-[node name="Spwaner" parent="Actors/Enemies" instance=ExtResource("8_urhbx")]
+[node name="HiveBoss" parent="Actors/Enemies" instance=ExtResource("8_urhbx")]
 position = Vector2(2708, -2640)
 HORNET_VISION_RADIUS = 400
 
@@ -3642,8 +3643,17 @@ position = Vector2(2360, -1972)
 [node name="Entity2" parent="Actors/Enemies/Regular" instance=ExtResource("23_gxhuh")]
 position = Vector2(697, -2705)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Actors/Enemies"]
+
+[node name="SpawnerHealthBar" parent="Actors/Enemies/CanvasLayer" instance=ExtResource("24_mo5ui")]
+offset_left = 389.0
+offset_top = 14.0
+offset_right = 389.0
+offset_bottom = 14.0
+
 [node name="Player" parent="Actors" instance=ExtResource("3_dk8vk")]
 position = Vector2(1639, -2595)
+GOD_MODE = false
 
 [node name="MainTheme" type="AudioStreamPlayer2D" parent="Actors/Player"]
 position = Vector2(-311.25, -462.5)
@@ -3655,12 +3665,11 @@ autoplay = true
 stream = ExtResource("5_vetwv")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-visible = false
 position = Vector2(232, 379.5)
 
 [connection signal="trigger_boss_music" from="Map/BossGateStaticBody" to="." method="_on_boss_gate_static_body_trigger_boss_music"]
 [connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="." method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="Map/BossGateStaticBody" method="_on_mini_boss_trigger_area_body_entered"]
 [connection signal="body_entered" from="Map/Triggers/MiniBossTriggerArea" to="Actors/Player" method="_on_mini_boss_trigger_area_body_entered"]
-[connection signal="spawnerDeath" from="Actors/Enemies/Spwaner" to="." method="_on_spwaner_spawner_death"]
+[connection signal="spawnerDeath" from="Actors/Enemies/HiveBoss" to="." method="_on_spwaner_spawner_death"]
 [connection signal="died" from="Actors/Player" to="." method="_on_player_died"]

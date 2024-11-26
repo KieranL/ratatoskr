@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxo0l70wnpjpv"]
+
+[ext_resource type="Script" path="res://scenes/maingame/gui/health_bar.gd" id="1_41xtv"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="1_xwv48"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oqb26"]
+font = ExtResource("1_xwv48")
+
+[node name="EntityHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 199.0
+offset_top = 12.0
+offset_right = 199.0
+offset_bottom = 12.0
+script = ExtResource("1_41xtv")
+NAME = "hi"
+
+[node name="Name" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = -198.0
+offset_top = -12.0
+offset_right = -158.0
+offset_bottom = 11.0
+text = "Boss"
+label_settings = SubResource("LabelSettings_oqb26")
+
+[node name="BarBackground" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = -199.0
+offset_top = -11.0
+offset_right = 200.0
+offset_bottom = 10.0
+color = Color(0, 0, 0, 1)
+
+[node name="HealthBar" type="ColorRect" parent="."]
+z_index = 2
+offset_left = -199.0
+offset_top = -11.0
+offset_right = 200.0
+offset_bottom = 10.0
+color = Color(0.458369, 0.0127486, 0.00707084, 1)

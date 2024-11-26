@@ -2,6 +2,7 @@ class_name HornetNest
 extends CharacterBody2D
 
 signal spawnerDeath()
+signal healthChanged(current)
 
 @export var MAX_SPAWNED_AT_ONE_TIME := 3
 @export var SPAWN_COOLDOWN_IN_MS := 7500.0
@@ -46,6 +47,7 @@ func take_damage(damage) -> void:
 	if _is_hit == false:
 		_is_hit = true
 		CURRENT_HEALTH -= damage
+		healthChanged.emit(CURRENT_HEALTH)
 		hit_sound.play()
 		await trigger_invincible(FRAME_FLICKER_TIME)
 	

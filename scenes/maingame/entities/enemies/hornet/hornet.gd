@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal died()
 
+#TODO, figure out why the hornet death animation can get interupted
+
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var collision_shape := $CollisionShape2D
@@ -86,6 +88,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 100
 		move_and_slide()
+		if collision_shape.disabled == false:
+			collision_shape.disabled = true
 
 func hit_player(collider) -> void:
 	var player = collider #make typing more clear
@@ -97,11 +101,17 @@ func hit_player(collider) -> void:
 		_hit_player = false
 
 func destroy() -> void:
-	print("run destroy function")
 	_state = State.DEAD
 	velocity = Vector2.ZERO
 	animation_player.play("destroy")
-	_is_hit = true
+	animation_player.animation_finished.connect(_on_animation_player_destroy_finished)
+
+func _on_animation_player_destroy_finished(anim_name: StringName) -> void:
+	if anim_name == "destroy":
+		died.emit()
+		get_parent().remove_child(get_node("RoamRadius"))
+		queue_free()
+		animation_player.animation_finished.disconnect(_on_animation_player_destroy_finished)
 
 func take_damage(damage) -> void:
 	if _state == State.DEAD:
@@ -110,14 +120,13 @@ func take_damage(damage) -> void:
 		_is_hit = true
 		CURRENT_HEALTH -= damage
 		damaged_sound.play()
-		await trigger_invincible(FRAME_FLICKER_TIME)
+		#await trigger_invincible(FRAME_FLICKER_TIME)
 		
 		if CURRENT_HEALTH <= 0:
 			collision_shape.disabled = true
 			destroy()
 			
 		_is_hit = false
-	print("take damage")
 
 func hunt(huntTarget: Node2D) -> void:
 	if _state == State.DEAD:
@@ -126,7 +135,6 @@ func hunt(huntTarget: Node2D) -> void:
 	last_roam_target_location = target_location
 	target = huntTarget
 	current_speed = HUNT_SPEED
-	print("hunt")
 
 
 func roam() -> void:
@@ -145,7 +153,6 @@ func pick_new_roam_target():
 		await get_tree().create_timer(5).timeout
 		target_location.x = randf_range(home.global_position.x - home.shape.radius, home.global_position.x + home.shape.radius)
 		_state = State.ROAMING
-	print("pick new roam target")
 
 func _on_vision_sphere_body_entered(body: Node2D) -> void:
 	if _state == State.DEAD:
@@ -178,11 +185,3 @@ func get_new_animation() -> StringName:
 	else:
 		animation_new = &"Flying"
 	return animation_new
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	print(anim_name)
-	if anim_name == "destroy":
-		died.emit()
-		get_parent().remove_child(get_parent().get_node("RoamRadius"))
-		queue_free()
