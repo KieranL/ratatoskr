@@ -29,6 +29,7 @@ enum State {
 	ROAMING,
 	HUNTING,
 	WAITING,
+	HURT,
 	DEAD
 }
 
@@ -57,11 +58,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _state != State.DEAD:
-		var animation := get_new_animation()
-		if animation != animation_player.current_animation:
-			animation_player.play(animation)
-		if (_state == State.HUNTING):
-			target_location = target.position
+		if not _is_hit:
+			var animation := get_new_animation()
+			if animation != animation_player.current_animation:
+				animation_player.play(animation)
+			if (_state == State.HUNTING):
+				target_location = target.position
 			
 		if (_state == State.ROAMING):
 			if (global_position.x - target_location.x <= 0.0):
@@ -121,12 +123,19 @@ func take_damage(damage) -> void:
 		CURRENT_HEALTH -= damage
 		damaged_sound.play()
 		#await trigger_invincible(FRAME_FLICKER_TIME)
-		
+
 		if CURRENT_HEALTH <= 0:
 			collision_shape.disabled = true
 			destroy()
+		else:
+			animation_player.play("damaged")
+			animation_player.animation_finished.connect(_on_animation_player_damaged_finished)
 			
+func _on_animation_player_damaged_finished(anim_name: StringName) -> void:
+	if anim_name == "damaged":
 		_is_hit = false
+		animation_player.animation_finished.disconnect(_on_animation_player_damaged_finished)
+
 
 func hunt(huntTarget: Node2D) -> void:
 	if _state == State.DEAD:
@@ -143,7 +152,6 @@ func roam() -> void:
 	_state = State.ROAMING
 	target_location = last_roam_target_location
 	current_speed = ROAM_SPEED
-	print("roam")
 
 func pick_new_roam_target():
 	if _state == State.DEAD:
@@ -167,16 +175,6 @@ func _on_vision_sphere_body_exited(body: Node2D) -> void:
 	if (body is Player):
 		if _state == State.HUNTING:
 			roam()
-			
-func trigger_invincible(duration_in_ms) -> void:
-	var duration_per_flicker = duration_in_ms / FRAME_FLICKER_AMOUNT / 2
-	
-	for i in FRAME_FLICKER_AMOUNT:
-		sprite.visible = false
-		await get_tree().create_timer(duration_per_flicker / 1000).timeout
-		sprite.visible = true
-		await get_tree().create_timer(duration_per_flicker / 1000).timeout
-
 
 func get_new_animation() -> StringName:
 	var animation_new: StringName

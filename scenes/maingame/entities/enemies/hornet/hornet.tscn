@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsevj1qewd45y"]
+[gd_scene load_steps=16 format=3 uid="uid://dsevj1qewd45y"]
 
 [ext_resource type="Script" path="res://scenes/maingame/entities/enemies/hornet/hornet.gd" id="1_fgc2m"]
 [ext_resource type="Texture2D" uid="uid://p54xcp2x1ad5" path="res://Assets/Art/enemies/hornet/Hornet.webp" id="2_ayl5i"]
@@ -162,6 +162,30 @@ tracks/9/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("..:collision_layer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_qlseb"]
 resource_name = "destroy"
@@ -287,11 +311,39 @@ tracks/9/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_w3jyr"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("..:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_er65d"]
 _data = {
 "Attack": SubResource("Animation_1kbng"),
 "Flying": SubResource("Animation_obqnu"),
 "RESET": SubResource("Animation_ykh5o"),
+"damaged": SubResource("Animation_w3jyr"),
 "destroy": SubResource("Animation_qlseb")
 }
 
@@ -361,6 +413,5 @@ color_ramp = SubResource("Gradient_c73lw")
 [node name="Explode" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_coxdq")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_entered"]
 [connection signal="body_exited" from="TargetRadius/Area2D2" to="." method="_on_vision_sphere_body_exited"]
