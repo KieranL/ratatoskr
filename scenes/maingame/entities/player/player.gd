@@ -53,6 +53,7 @@ const FRAME_FLICKER_AMOUNT = 4
 		set(value):
 			ACORNS = value
 			acorns_ui_amount.text = str(value)
+@export var GOD_MODE := false
 
 var alive = true
 			
@@ -154,6 +155,8 @@ func try_jump() -> void:
 		velocity.y = JUMP_VELOCITY
 	
 func hit(damage, source: Node):
+	if GOD_MODE:
+		return
 	if _is_damage_state == false:
 		ouch_sound.play()
 		CURRENT_HEALTH -= damage

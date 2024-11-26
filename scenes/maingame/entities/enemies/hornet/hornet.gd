@@ -3,10 +3,18 @@ extends CharacterBody2D
 
 signal died()
 
+#TODO, figure out why the hornet death animation can get interupted
+
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var collision_shape := $CollisionShape2D
 @onready var damaged_sound := $Damaged as AudioStreamPlayer2D
+
+@onready var vision_sphere := $TargetRadius/Area2D2/vision_sphere
+@export var VISION_SPHERE_RADIUS := 200 :
+	set(value):
+		if vision_sphere:
+			(vision_sphere.shape as CircleShape2D).radius = VISION_SPHERE_RADIUS
 
 @export var ROAM_COOLDOWN_IN_MS := 3000
 
@@ -31,7 +39,6 @@ var target_location := Vector2()
 var target = Node2D
 
 var home = CircleShape2D
-
 var _hit_player := false
 
 const FRAME_FLICKER_AMOUNT = 4
@@ -49,11 +56,10 @@ func _ready() -> void:
 	home = get_parent().get_node("RoamRadius/Area2D/roam_sphere")
 
 func _physics_process(delta: float) -> void:
-	var animation := get_new_animation()
-	if animation != animation_player.current_animation:
-		animation_player.play(animation)
-	
 	if _state != State.DEAD:
+		var animation := get_new_animation()
+		if animation != animation_player.current_animation:
+			animation_player.play(animation)
 		if (_state == State.HUNTING):
 			target_location = target.position
 			
@@ -79,6 +85,11 @@ func _physics_process(delta: float) -> void:
 					var collider = get_slide_collision(i).get_collider()
 					if (collider is Player):
 						await hit_player(collider)
+	else:
+		velocity.y = 100
+		move_and_slide()
+		if collision_shape.disabled == false:
+			collision_shape.disabled = true
 
 func hit_player(collider) -> void:
 	var player = collider #make typing more clear
@@ -92,31 +103,51 @@ func hit_player(collider) -> void:
 func destroy() -> void:
 	_state = State.DEAD
 	velocity = Vector2.ZERO
+	animation_player.play("destroy")
+	animation_player.animation_finished.connect(_on_animation_player_destroy_finished)
+
+func _on_animation_player_destroy_finished(anim_name: StringName) -> void:
+	if anim_name == "destroy":
+		died.emit()
+		get_parent().remove_child(get_node("RoamRadius"))
+		queue_free()
+		animation_player.animation_finished.disconnect(_on_animation_player_destroy_finished)
 
 func take_damage(damage) -> void:
+	if _state == State.DEAD:
+		return
 	if _is_hit == false:
 		_is_hit = true
 		CURRENT_HEALTH -= damage
 		damaged_sound.play()
-		await trigger_invincible(FRAME_FLICKER_TIME)
+		#await trigger_invincible(FRAME_FLICKER_TIME)
 		
 		if CURRENT_HEALTH <= 0:
+			collision_shape.disabled = true
 			destroy()
 			
 		_is_hit = false
 
 func hunt(huntTarget: Node2D) -> void:
+	if _state == State.DEAD:
+		return
 	_state = State.HUNTING
 	last_roam_target_location = target_location
 	target = huntTarget
 	current_speed = HUNT_SPEED
 
+
 func roam() -> void:
+	if _state == State.DEAD:
+		return
 	_state = State.ROAMING
 	target_location = last_roam_target_location
 	current_speed = ROAM_SPEED
+	print("roam")
 
 func pick_new_roam_target():
+	if _state == State.DEAD:
+		return
 	if _state != State.WAITING:
 		_state = State.WAITING
 		await get_tree().create_timer(5).timeout
@@ -124,11 +155,15 @@ func pick_new_roam_target():
 		_state = State.ROAMING
 
 func _on_vision_sphere_body_entered(body: Node2D) -> void:
+	if _state == State.DEAD:
+		return
 	if (body is Player):
 		if _state != State.HUNTING:
 			hunt(body)
 	
 func _on_vision_sphere_body_exited(body: Node2D) -> void:
+	if _state == State.DEAD:
+		return
 	if (body is Player):
 		if _state == State.HUNTING:
 			roam()
@@ -146,16 +181,7 @@ func trigger_invincible(duration_in_ms) -> void:
 func get_new_animation() -> StringName:
 	var animation_new: StringName
 	if _state == State.HUNTING:
-			animation_new = &"Attack"
-	elif _state == State.ROAMING or _state == State.WAITING:
-		animation_new = &"Flying"
+		animation_new = &"Attack"
 	else:
-		animation_new = &"destroy"
+		animation_new = &"Flying"
 	return animation_new
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "destroy":
-		died.emit()
-		get_parent().remove_child(get_parent().get_node("RoamRadius"))
-		queue_free()
