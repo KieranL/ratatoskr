@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://duwm7i44o75o2" path="res://Assets/SoundEffects/explode.wav" id="2"]
 [ext_resource type="AudioStream" uid="uid://dm7wsawmylc7b" path="res://Assets/SoundEffects/hit.wav" id="3"]
 [ext_resource type="Texture2D" uid="uid://bjjywmvba0sve" path="res://Assets/Art/enemy.webp" id="4"]
-[ext_resource type="Script" path="res://scenes/maingame/entities/enemies/snake/snake.gd" id="5"]
+[ext_resource type="Script" uid="uid://msy4xdpfb7xu" path="res://scenes/maingame/entities/enemies/snake/snake.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://du68yhi2roh5k" path="res://Assets/SoundEffects/SnakeHit.wav" id="5_yhxkn"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
@@ -70,6 +70,33 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_eud58"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="2"]
@@ -243,40 +270,13 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_eud58"]
-resource_name = "damaged"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false, true, false, true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath(".:collision_layer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0kjfc"]
 _data = {
-"RESET": SubResource("8"),
-"damaged": SubResource("Animation_eud58"),
-"destroy": SubResource("2"),
-"idle": SubResource("3"),
-"walk": SubResource("4")
+&"RESET": SubResource("8"),
+&"damaged": SubResource("Animation_eud58"),
+&"destroy": SubResource("2"),
+&"idle": SubResource("3"),
+&"walk": SubResource("4")
 }
 
 [sub_resource type="CapsuleShape2D" id="5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxo0l70wnpjpv"]
 
-[ext_resource type="Script" path="res://scenes/maingame/gui/health_bar.gd" id="1_41xtv"]
+[ext_resource type="Script" uid="uid://c0hyutj0u5spe" path="res://scenes/maingame/gui/health_bar.gd" id="1_41xtv"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="1_xwv48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_oqb26"]

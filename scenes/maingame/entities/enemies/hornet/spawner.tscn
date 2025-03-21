@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dgkyv2jpr1cbi"]
 
-[ext_resource type="Script" path="res://scenes/maingame/entities/enemies/hornet/spawner.gd" id="1_wjj1k"]
+[ext_resource type="Script" uid="uid://behbu2cs8peuo" path="res://scenes/maingame/entities/enemies/hornet/spawner.gd" id="1_wjj1k"]
 [ext_resource type="Texture2D" uid="uid://bo738s7awa6j1" path="res://Assets/Art/enemies/hornet/nest.png" id="2_et5y2"]
 [ext_resource type="AudioStream" uid="uid://ce8x55m32vrdc" path="res://Assets/SoundEffects/WaspHiveHit.wav" id="3_51oy2"]
 [ext_resource type="Texture2D" uid="uid://twy8cs78gqbv" path="res://Assets/Art/cloud_3.webp" id="4_3peaw"]
@@ -90,8 +90,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s0l7e"]
 _data = {
-"RESET": SubResource("Animation_8cfom"),
-"death": SubResource("Animation_nu0p0")
+&"RESET": SubResource("Animation_8cfom"),
+&"death": SubResource("Animation_nu0p0")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_viges"]
