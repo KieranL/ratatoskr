@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://qsslx0xe7sf1"]
 
-[ext_resource type="Script" path="res://scenes/maingame/gui/acorn_screen_transition.gd" id="1_b3lao"]
+[ext_resource type="Script" uid="uid://14j3j3812yna" path="res://scenes/maingame/gui/acorn_screen_transition.gd" id="1_b3lao"]
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="1_y0xhv"]
 
 [sub_resource type="Animation" id="Animation_j10tv"]
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_065y4"]
 _data = {
-"RESET": SubResource("Animation_j10tv"),
-"acron_transition_animation": SubResource("Animation_lrhyl")
+&"RESET": SubResource("Animation_j10tv"),
+&"acron_transition_animation": SubResource("Animation_lrhyl")
 }
 
 [node name="AcornScreenTransition" type="Node2D"]

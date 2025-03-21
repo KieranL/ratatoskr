@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_xysef"]
 [ext_resource type="AudioStream" uid="uid://d14lhwr070dsd" path="res://Assets/SoundEffects/CollectAcorn.wav" id="3_g3gk7"]
-[ext_resource type="Script" path="res://scenes/maingame/levels/collectables/acorn/acorn.gd" id="4"]
-
+[ext_resource type="Script" uid="uid://dchyqb6v8jywm" path="res://scenes/maingame/levels/collectables/acorn/acorn.gd" id="4"]
 
 [sub_resource type="Animation" id="Animation_4kkvr"]
 length = 0.001
@@ -169,9 +168,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i7oeb"]
 _data = {
-"RESET": SubResource("Animation_4kkvr"),
-"picked": SubResource("1"),
-"spinning": SubResource("2")
+&"RESET": SubResource("Animation_4kkvr"),
+&"picked": SubResource("1"),
+&"spinning": SubResource("2")
 }
 
 [sub_resource type="CircleShape2D" id="3"]

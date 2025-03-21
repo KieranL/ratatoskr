@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dl74ruxxetvgv"]
 
-[ext_resource type="Script" path="res://scenes/maingame/gui/game_over.gd" id="1_oxtr6"]
+[ext_resource type="Script" uid="uid://dv5tbbmw64u8o" path="res://scenes/maingame/gui/game_over.gd" id="1_oxtr6"]
 [ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://Assets/Font/kenney_mini_square.ttf" id="2_5cpoa"]
 [ext_resource type="AudioStream" uid="uid://cvg07bp4icek2" path="res://Assets/Music/Main Theme.ogg" id="3_m4hqi"]
 
@@ -40,8 +40,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6sml0"]
 _data = {
-"RESET": SubResource("Animation_wxdgg"),
-"game_over_text": SubResource("Animation_r6bbq")
+&"RESET": SubResource("Animation_wxdgg"),
+&"game_over_text": SubResource("Animation_r6bbq")
 }
 
 [sub_resource type="Animation" id="Animation_chyrf"]
@@ -76,8 +76,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_csgga"]
 _data = {
-"RESET": SubResource("Animation_chyrf"),
-"background_fade": SubResource("Animation_wvx4h")
+&"RESET": SubResource("Animation_chyrf"),
+&"background_fade": SubResource("Animation_wvx4h")
 }
 
 [node name="game_over" type="Control"]

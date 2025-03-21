@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cg1cnkcs84nfo"]
 
-[ext_resource type="Script" path="res://scenes/maingame/entities/player/axe.gd" id="1_uvetl"]
+[ext_resource type="Script" uid="uid://cypj5mf82yfs1" path="res://scenes/maingame/entities/player/axe.gd" id="1_uvetl"]
 [ext_resource type="Texture2D" uid="uid://coj0d33vyyqx1" path="res://Assets/Art/bullet.webp" id="2_372lc"]
 [ext_resource type="Texture2D" uid="uid://bmbw2u71yvbul" path="res://Assets/Art/Ratatoskr.webp" id="3_xx13j"]
 
@@ -264,10 +264,10 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iv8gr"]
 _data = {
-"RESET": SubResource("Animation_v7668"),
-"destroy": SubResource("5"),
-"swing": SubResource("Animation_j745y"),
-"swing_mirror": SubResource("Animation_5w8nw")
+&"RESET": SubResource("Animation_v7668"),
+&"destroy": SubResource("5"),
+&"swing": SubResource("Animation_j745y"),
+&"swing_mirror": SubResource("Animation_5w8nw")
 }
 
 [node name="Nut" type="RigidBody2D"]

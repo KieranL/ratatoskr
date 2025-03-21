@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dh71g61cm8k44"]
 
 [ext_resource type="Theme" uid="uid://da4noqsij73it" path="res://scenes/maingame/gui/theme.tres" id="1"]
-[ext_resource type="Script" path="res://scenes/maingame/gui/pause_menu.gd" id="2"]
+[ext_resource type="Script" uid="uid://vayhubvjt0ix" path="res://scenes/maingame/gui/pause_menu.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://bsyqg6eh3wl5i" path="res://scenes/maingame/gui/coins_counter.tscn" id="4"]
 
 [node name="PauseMenu" type="Control"]
