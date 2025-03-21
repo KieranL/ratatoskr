@@ -26,6 +26,8 @@ var _state := State.WALKING
 const FRAME_FLICKER_AMOUNT = 4
 const FRAME_FLICKER_TIME = 400
 
+var _x_velocity_flipped = false
+
 func _physics_process(delta: float) -> void:
 	if _state != State.HURT:
 		if _state == State.WALKING and velocity.is_zero_approx():
@@ -36,9 +38,12 @@ func _physics_process(delta: float) -> void:
 		elif not floor_detector_right.is_colliding():
 			velocity.x = -WALK_SPEED
 
-	if is_on_wall():
+	if is_on_wall() and not _x_velocity_flipped:
 		velocity.x = -velocity.x
-
+		_x_velocity_flipped = true
+	else:
+		_x_velocity_flipped = false
+		
 	if _state != State.DEAD:
 		var collision_occured = move_and_slide()
 		if collision_occured:
