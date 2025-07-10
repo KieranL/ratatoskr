@@ -11,7 +11,12 @@ var is_game_over: bool = false
 var is_acorn_transition: bool = false
 
 enum LEVEL { LEVEL_1, LEVEL_2 }
-@export var current_level: LEVEL = LEVEL.LEVEL_2
+@export var current_level: LEVEL = LEVEL.LEVEL_2:
+	set(value):
+		if not is_inside_tree():
+			await ready
+		current_level = value
+		load_level(current_level)
 
 func _ready():
 	load_level(current_level)
